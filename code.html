@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TAGMA - Portal de Notícias</title>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Literata:wght@400;700&amp;family=IBM+Plex+Sans:wght@400;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface": "#fcf9f8",
+                    "on-surface-variant": "#414940",
+                    "on-tertiary-fixed": "#38091c",
+                    "tertiary-fixed": "#ffd9e2",
+                    "on-surface": "#1c1b1b",
+                    "tertiary": "#320417",
+                    "surface-container-high": "#eae7e7",
+                    "surface-dim": "#dcd9d9",
+                    "surface-container-low": "#f6f3f2",
+                    "on-primary": "#ffffff",
+                    "secondary-container": "#fd9337",
+                    "primary-fixed": "#bbf0bd",
+                    "outline": "#727970",
+                    "surface-off-white": "#fcfcfc",
+                    "section-culture": "#c36",
+                    "primary-container": "#003311",
+                    "tertiary-fixed-dim": "#ffb1c7",
+                    "on-secondary-container": "#683300",
+                    "surface-bright": "#fcf9f8",
+                    "on-background": "#1c1b1b",
+                    "tertiary-container": "#4c192c",
+                    "surface-tint": "#3a6840",
+                    "on-tertiary": "#ffffff",
+                    "editorial-green-deep": "#003311",
+                    "on-primary-fixed-variant": "#21502b",
+                    "secondary-fixed": "#ffdcc4",
+                    "error": "#ba1a1a",
+                    "on-error": "#ffffff",
+                    "inverse-primary": "#a0d3a2",
+                    "on-tertiary-fixed-variant": "#6e3448",
+                    "surface-container-highest": "#e5e2e1",
+                    "inverse-on-surface": "#f3f0ef",
+                    "primary-fixed-dim": "#a0d3a2",
+                    "secondary": "#934b00",
+                    "on-primary-container": "#6d9e71",
+                    "section-finance": "#fcb900",
+                    "on-tertiary-container": "#c57e93",
+                    "surface-container": "#f0eded",
+                    "border-subtle": "#e0e0e0",
+                    "on-secondary-fixed-variant": "#703800",
+                    "editorial-green-muted": "#004d1a",
+                    "section-tech": "#0693e3",
+                    "on-primary-fixed": "#002109",
+                    "on-error-container": "#93000a",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-surface": "#313030",
+                    "on-secondary-fixed": "#301400",
+                    "surface-variant": "#e5e2e1",
+                    "secondary-fixed-dim": "#ffb781",
+                    "outline-variant": "#c1c9be",
+                    "background": "#fcf9f8",
+                    "primary": "#001c06",
+                    "on-secondary": "#ffffff",
+                    "error-container": "#ffdad6"
+            },
+            "spacing": {
+                    "stack-xl": "80px",
+                    "gutter": "32px",
+                    "margin-mobile": "16px",
+                    "container-max": "1280px",
+                    "stack-lg": "48px",
+                    "stack-sm": "8px",
+                    "stack-md": "24px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Hanken Grotesk"],
+                    "body-sm": ["Literata"],
+                    "body-lg": ["Literata"],
+                    "headline-xl": ["Hanken Grotesk"],
+                    "meta": ["IBM Plex Sans"],
+                    "headline-sm": ["Hanken Grotesk"],
+                    "headline-lg": ["Hanken Grotesk"],
+                    "body-md": ["Literata"],
+                    "label-bold": ["IBM Plex Sans"]
+            },
+            "fontSize": {
+                    "headline-md": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "body-lg": ["20px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-xl": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "meta": ["13px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                    "headline-sm": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "headline-lg": ["42px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-md": ["17px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-bold": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        body {
+            background-color: #fcf9f8;
+            -webkit-font-smoothing: antialiased;
+        }
+        .editorial-border-left {
+            border-left: 4px solid #003311;
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-margin-mobile h-16 bg-surface dark:bg-surface-container border-b border-border-subtle dark:border-outline-variant">
+<button aria-label="Menu" class="p-2 hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-primary dark:text-on-primary">menu</span>
+</button>
+<div class="h-8 flex items-center">
+<img alt="TAGMA Logo" class="h-full object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0ujIRjtNu2NfCc8ouy_1zNErJgL8GNk4pSa6jAtZMIcz4ElbD2lVBJClLyuUI9aerVrA_rYL5EFZAtOKQeeviBAIzZ2_G7FDn82PwmMgAMT4RIGIVGl2gi7Jw6FTukeaabfYL6Wy_gbVU-GA4aNgW3ax256FPlkZknTAHRKwe680-LLU70MByi0ITKPMdneS-6WuzjZ2o-Sy7BONhKJ4lBOsRuNsmGtuYYCxqsZxRz0Yc9oqLAGIU6Udi0o"/>
+</div>
+<button aria-label="Pesquisar" class="p-2 hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-primary dark:text-on-primary">search</span>
+</button>
+</header>
+<!-- Breaking News Ticker -->
+<div class="mt-16 bg-editorial-green-deep text-white px-margin-mobile py-2 flex items-center overflow-hidden">
+<span class="font-label-bold text-label-bold uppercase tracking-wider mr-3 whitespace-nowrap bg-secondary px-2 py-0.5">Urgente</span>
+<div class="animate-marquee whitespace-nowrap font-meta text-meta">
+            Congresso aprova regras para emendas parlamentares...    •    Eclipse lunar visível em todo o Brasil nesta madrugada...
+        </div>
+</div>
+<main class="pb-24">
+<!-- Manchete Principal -->
+<section class="px-margin-mobile py-stack-md bg-white">
+<div class="mb-stack-sm">
+<span class="font-label-bold text-label-bold text-secondary uppercase tracking-widest">Política</span>
+</div>
+<h1 class="font-headline-md text-headline-md text-primary mb-4 leading-tight">
+                Congresso aprova regras para emendas parlamentares mas mantém brecha de transparência
+            </h1>
+<div class="relative w-full aspect-video mb-4 overflow-hidden rounded-sm">
+<img class="w-full h-full object-cover" data-alt="A detailed wide shot of the Brazilian National Congress building at dusk, with the iconic twin towers and domes illuminated against a deep blue sky. The scene is captured in a sober, professional journalistic style with high contrast and sharp details, reflecting an atmosphere of institutional power and political weight. The lighting is dramatic, emphasizing the architectural Brutalist lines of Oscar Niemeyer's design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCN6PXdRVO_MXI055rQRS23Usy6yi8mCoNHa7Fwj-j2G4eIHdbbumA9SkcEQ-kBEOtruUjEYmQS5Y_DyI-ixZxtTVQryrYUi51yorp_fDTzh1rSETbrfyEuIHXMfoHo00ezCUFqafiJW6OjfT-YoR0dN1nm1T20H6ydS18GV8o_kb0c1q2-bcyPo1REMyrH8bpYgsaaOb3XT7ltB91mL0Ks2gn875uwSnRK6CV8czZlskno3ZfaHsDAZ8C3hIsD6jJJSP0p33O627E"/>
+</div>
+<p class="font-body-md text-on-surface-variant mb-4">
+                Texto-base foi aprovado com 356 votos favoráveis. Críticos afirmam que as novas regras não resolvem a opacidade do "orçamento secreto".
+            </p>
+<div class="flex items-center text-meta font-meta text-outline">
+<span>Por João Silva</span>
+<span class="mx-2">•</span>
+<span>Há 2 horas</span>
+</div>
+</section>
+<hr class="border-border-subtle mx-margin-mobile"/>
+<!-- Feed de Notícias Recentes -->
+<section class="px-margin-mobile py-stack-md">
+<h2 class="font-headline-sm text-headline-sm text-primary mb-stack-md border-b-2 border-editorial-green-deep inline-block pb-1">Notícias Recentes</h2>
+<div class="space-y-stack-md">
+<!-- Notícia 1 -->
+<div class="flex gap-4">
+<div class="flex-1">
+<span class="font-label-bold text-[10px] text-editorial-green-deep uppercase tracking-tighter">Ciência</span>
+<h3 class="font-headline-sm text-[18px] leading-snug mt-1 hover:text-editorial-green-muted transition-colors">Eclipse Lunar: Saiba como observar o fenômeno hoje</h3>
+</div>
+<div class="w-24 h-24 shrink-0 overflow-hidden rounded-sm">
+<img class="w-full h-full object-cover" data-alt="A dramatic photograph of a blood-red lunar eclipse hanging in a pitch-black night sky, surrounded by faint, distant stars. The image is captured with professional astronomical precision, emphasizing the texture of the moon's craters. The mood is mysterious and grand, maintaining the portal's sober and intellectual visual identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBF9zw-JsO-YRsjy8Oa_svw96rtAStayamDiz6eZjvrKlq-AEXDOQ44XOeVAx0giVnPc4gH8_k7VCislN2OrxmKzrWW09j2zc5LX0LPBj9gc-o8-l9HSnjZ5N9Ht51UvaiWmQ9CZ30YM0-FMZAfVG09HhsR6nnPLgQSzSC0melieTAN2IlXWQKugRhivyaV1Owv76OihAF2-LVXDyQVLQWy0oz5fEeTBE9gBqsvufCk6nVUrdUoTyPoCe96K0v5YaIXh6UHz9gVXms"/>
+</div>
+</div>
+<!-- Notícia 2 -->
+<div class="flex gap-4">
+<div class="flex-1">
+<span class="font-label-bold text-[10px] text-editorial-green-deep uppercase tracking-tighter">Cultura</span>
+<h3 class="font-headline-sm text-[18px] leading-snug mt-1 hover:text-editorial-green-muted transition-colors">Djonga lança novo álbum focado em críticas sociais e maturidade</h3>
+</div>
+<div class="w-24 h-24 shrink-0 overflow-hidden rounded-sm">
+<img class="w-full h-full object-cover" data-alt="A powerful, black and white portrait of a Brazilian hip-hop artist in a dimly lit recording studio, captured in a high-contrast editorial style. The lighting is moody and focused, highlighting facial expressions that convey deep intellectual thought and creative passion. The aesthetic is clean, minimal, and authoritative, aligning with a premium news portal." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBu961HQ3PKjBikxFuVl45VcBidr9Mx80G9qqciXAr7SnS3oMr2tJcE91mjSUnMhEpS1JaiF-YWQdKFol6OxgV40NIV40BN_fXUifi8YNKMywVUcpuscdrxILk7Xh-SThhv25ubPSyvmJWDGKMSJO5BbwS8sJqf5wid3vNfb_E_ONxEBoRvjjrO45lP90bLCfLgteXrO-f9J9vAUb8Nnk9C8Zma8AYTDwqEBeCxtURijZ-yTKxuA80HlEs8Td5CW8zlxsvW5__L6no"/>
+</div>
+</div>
+<!-- Notícia 3 -->
+<div class="flex gap-4">
+<div class="flex-1">
+<span class="font-label-bold text-[10px] text-editorial-green-deep uppercase tracking-tighter">Economia</span>
+<h3 class="font-headline-sm text-[18px] leading-snug mt-1 hover:text-editorial-green-muted transition-colors">Imposto de importação de alimentos: o que muda no seu bolso?</h3>
+</div>
+<div class="w-24 h-24 shrink-0 overflow-hidden rounded-sm">
+<img class="w-full h-full object-cover" data-alt="A macro shot of fresh, colorful vegetables at a high-end gourmet market, with a subtle focus on prices and labels in the background. The lighting is natural and bright, creating a high-key, modern aesthetic. The composition is structured and clean, reinforcing a sense of economic order and journalistic clarity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAl6C03OftOVdkoNuBrWc0YlnQror26-mPa4BR5qpQBOoMWnpgMi5xHpFnJBtDwGAHa-eDvzZc3luObHs_Utdcv_s7qkHbcgb7EygfkzFsax8TZ_z3pkU7lzU2P8sKQRPSISKgZWjBSXbAtGSMCLjM0NcvidtaKRH8RShfOs7WlFdoAdhql8BrJtJzGijc-9JYKlnwWQpLBofLMByZxo4NSuvdKTgdVnm5HjXynHO_HmH_TgRzaBfH1m9FugQ1x32_jJe6y16i0_Nw"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Destaque da Semana -->
+<section class="bg-surface-container py-stack-md px-margin-mobile my-stack-md">
+<div class="mb-4">
+<span class="bg-primary text-white font-label-bold text-[10px] px-2 py-1 uppercase tracking-widest">Especial Tagma</span>
+</div>
+<div class="relative h-64 w-full mb-4 overflow-hidden rounded-lg">
+<img class="w-full h-full object-cover" data-alt="A serene and poignant photograph of an elderly couple sitting separately on a modern, minimalist park bench, looking away from each other towards a soft sunset. The lighting is warm yet bittersweet, capturing the complex emotions of the 'grey divorce' phenomenon. The style is cinematic and deeply human, with a sophisticated and sober color palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDQNXgXAU96gfdzjX4N0m8XYxCA1_bOjCeHaOSkivvclt4WGb3XHZF--Z0imNmBuQQqadFnd1q1y6U6AjBKRy6_KrCk3ocSzpmKlnHpzSyvNUkYMt7DPzf8IAajWwcBWSsF2IKJPQKLFQBnvW19NbsngCtudk-BbkYUneUi9jY9YHNChQo0RTEMNt8GCc0LXrMbGq-gaAFqr3Q0XeUWG29qvTr0huow1Bx1XdubRhZecNcreJ7FOXW7cKSUqoiborarUg6jibdRb4"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
+<h2 class="text-white font-headline-md text-headline-sm leading-tight">
+                        Divórcio Cinza: Por que casais maduros estão optando pela separação?
+                    </h2>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Pesquisa mostra aumento de 150% em divórcios após os 60 anos no Brasil. Especialistas analisam o impacto social e financeiro dessa tendência.
+            </p>
+<button class="mt-4 w-full bg-editorial-green-deep text-white font-label-bold py-3 uppercase tracking-widest hover:bg-editorial-green-muted transition-all active:scale-95">Leia a reportagem completa</button>
+</section>
+<!-- Seções por Editoria -->
+<section class="px-margin-mobile space-y-stack-lg">
+<!-- Internacional -->
+<div>
+<div class="flex items-center justify-between mb-4">
+<h2 class="font-headline-sm text-headline-sm text-primary editorial-border-left pl-3">Internacional</h2>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</div>
+<div class="space-y-4">
+<img class="w-full h-40 object-cover rounded-sm" data-alt="A high-stakes international diplomatic scene featuring several flags of diverse nations in a grand, brightly lit hall. The atmosphere is tense and formal, captured with a professional news photography style. The lighting is crisp and even, highlighting the textures of the silk flags and the polished wooden furniture, evoking a sense of global political importance." src="https://lh3.googleusercontent.com/aida-public/AB6AXuARc8Q0sXIw1ZIYtk3u3zUw6Rnwj8QTuQZVKOcW3va03l7tOTKqIeiNz0mUrl62ZBgqVBaaHmSX8YT9CTIrBGN6t2GCjeNayAJV6EkT4Uv1hM4URsdx7CHYCAJIlZJvn5fg-eyBtyY2-Ximkpaf6cBYdghPkLmQrGBOZSGjzCWS32JpJ3ljQ16VtjmE_yBjR2wQWVpbE7XliHn6P1JThAzXYH5pRq8auwzaTj9S6Pb_U036A71l70mXDQQoCBZN3OpDWCNDYsPLyHg"/>
+<h3 class="font-headline-sm text-[18px] leading-tight">Netanyahu enfrenta novos protestos em Israel após declaração polêmica</h3>
+</div>
+</div>
+<!-- Política -->
+<div>
+<div class="flex items-center justify-between mb-4">
+<h2 class="font-headline-sm text-headline-sm text-primary editorial-border-left pl-3">Política</h2>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</div>
+<div class="bg-white p-4 border border-border-subtle">
+<span class="text-secondary font-label-bold text-[10px] uppercase">Pesquisa Quaest</span>
+<h3 class="font-headline-sm text-[18px] leading-tight mt-1">Aprovação do governo oscila dentro da margem de erro, aponta levantamento</h3>
+<div class="mt-3 h-2 w-full bg-surface-container overflow-hidden rounded-full">
+<div class="h-full bg-editorial-green-deep w-[48%]"></div>
+</div>
+<div class="flex justify-between mt-1 text-meta font-meta">
+<span>Aprovação: 48%</span>
+<span>Desaprovação: 45%</span>
+</div>
+</div>
+</div>
+<!-- Esportes -->
+<div>
+<div class="flex items-center justify-between mb-4">
+<h2 class="font-headline-sm text-headline-sm text-primary editorial-border-left pl-3">Esportes</h2>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</div>
+<div class="flex gap-4 items-center">
+<div class="flex-1">
+<h3 class="font-headline-sm text-[18px] leading-tight">Briga de torcidas em clássico resulta em 15 detidos e interdição parcial de estádio</h3>
+</div>
+<span class="material-symbols-outlined text-error text-4xl" style="font-variation-settings: 'FILL' 1;">sports_soccer</span>
+</div>
+</div>
+<!-- Celebridades -->
+<div>
+<div class="flex items-center justify-between mb-4">
+<h2 class="font-headline-sm text-headline-sm text-primary editorial-border-left pl-3">Celebridades</h2>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-2">
+<div class="aspect-square bg-surface-container rounded-sm overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A bright and colorful television studio set designed for a popular reality show, featuring vibrant neon lights and modern furniture. The aesthetic is high-energy and contemporary, captured with a sharp wide-angle lens. The lighting is artificial and saturated, creating a striking contrast that feels immediate and engaging, yet maintains a professional photographic quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEJcz68sN_nHJ13h6MGgzBq-sFaOqeLtR6-MQDTt0ur3PXx3kGkqBnrU3eR1ioAcu2BtWvEtEIRLDRZmmNN316SOzlEyC1Hu3dMOssDnP4XSk5xKAMilXepS2j2MrCXk3q6xHAk_-SBY_okIQBHE9SBskiBFrXWGCPTzuHM0d97o-oJnEnq8PWFp1RmPnFKxFNO2B929Q4iXJrM6QLUEnZ9b5cbeAFbdAy3uL3lir6RWeeaINUee_e0J15_kSXkixrvfNHYY-9dNM"/>
+</div>
+<h4 class="font-label-bold text-[13px] leading-tight">BBB 25: Boninho antecipa novidades na dinâmica do jogo</h4>
+</div>
+<div class="space-y-2">
+<div class="aspect-square bg-surface-container rounded-sm overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A golden Oscar statuette stands elegantly on a sleek, black reflective surface, illuminated by a single, dramatic spotlight that creates a starburst effect. The atmosphere is prestigious and glamorous, utilizing a classic black and gold palette. The image is clean and minimalist, focusing on the iconic symbol of cinematic achievement in an authoritative editorial style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKVN32CvL0cxziGA7yL8xgVuNBLFWmT9koCYTEYPT0Lb-pqnRYFiThjXjCASrKjZ4LOMKekOF5IgIaJAttM8o9KauYBZNzKTRkBLm6QMThZAR7S0H9NMze-eTVuQ11xdbkktkHmeyGCJyUlyC4jLzA6yrU6LBd6-Nfo0t2DVofDaCdcE7cBTrzvCvFivcBmoNp9OfGt_v72c3e2sIXhGHL-uShXFH6WqWb6KQP8xSozsBkHKX1qBiBRaf6XrV4S0kHx90yYsm4cDs"/>
+</div>
+<h4 class="font-label-bold text-[13px] leading-tight">Oscar 2025: Veja a lista completa dos pré-indicados</h4>
+</div>
+</div>
+</div>
+</section>
+<!-- Seção de Ofertas (Bento Grid) -->
+<section class="mt-stack-lg px-margin-mobile py-stack-md bg-white border-y border-border-subtle">
+<h2 class="font-headline-sm text-headline-sm text-primary mb-stack-md flex items-center">
+<span class="material-symbols-outlined mr-2">shopping_bag</span> Ofertas do Dia
+            </h2>
+<div class="grid grid-cols-2 gap-3">
+<div class="col-span-2 bg-surface-container-low p-4 flex items-center justify-between border border-border-subtle">
+<div>
+<p class="font-label-bold text-[10px] text-secondary uppercase">Destaque Tech</p>
+<h4 class="font-headline-sm text-[16px]">Smartphone Premium X1</h4>
+<p class="text-primary font-bold text-lg">R$ 4.299,00</p>
+<button class="mt-2 text-editorial-green-deep font-label-bold text-[11px] underline uppercase">Ver Oferta</button>
+</div>
+<div class="w-24 h-24 bg-white p-2">
+<img class="w-full h-full object-contain" data-alt="A minimalist and high-end tech product shot of a sleek smartphone on a pure white background. The device features clean lines and a premium metallic finish. The lighting is soft and professional, emphasizing the sophisticated design of the hardware. The overall mood is clean, modern, and trustworthy, fitting the portal's corporate minimalist aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuASFccJejyeCon8X-oHlmYMzGt8tKRSLYB_khzky5B9VxQO7v9fXFxXIb2xl-vszB88APigCB6T9Y4B0gC5r9VKvJXOmiAwcEMg6nA9uluHW1O_8i7aNGTNFYv-Zxx405QAODUIfUXcNX3uyfWQT6fib2ZDR-RM-7NlqtqZdj0C2QTKAJBN8WYNKUhvOicBJKo653AoWGr_UG4pRLhkfCpeggqktyfBB4L7UCu6Jwm3dqSYEVQYdr7l6gBc_-Klj4J-kIJcbB5czGE"/>
+</div>
+</div>
+<div class="bg-surface-container-low p-3 border border-border-subtle">
+<div class="aspect-square bg-white mb-2 p-2">
+<img class="w-full h-full object-contain" data-alt="A pair of high-fidelity wireless headphones in a deep charcoal color, presented against a minimalist, light-gray background. The focus is on the premium materials and ergonomic design. The lighting is bright and crisp, highlighting the textures of the leather and metal. The aesthetic is clean and focused, reflecting a curated selection for a discerning audience." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZhrFeMrvmrz64ygSMsdYh5_-IpThY379H3xF-TaHp4BBwdgeopwh3bUV4bPD5IVDOxutFv2_r_Uz4jENzDOUGwzJH5gzAc0qDjqFbj6YUWseQmPllw_gags-EEzqvdalr4BiW1wuqTH10xg2gXH32vI0Lr9lL59UcoHIzA65Hh56mBniLsat9HDd643w2ZdXtp6a5ZQt3QB0ZESGYd3FlNMgYoGehQO4bLUQF0Js3wpAamDXMQi98l8GpRGNu61q-g-Vb4EvSKnM"/>
+</div>
+<h4 class="font-label-bold text-[12px] leading-tight h-8 overflow-hidden">Fone Wireless Noise Cancelling</h4>
+<p class="text-primary font-bold">R$ 899,00</p>
+</div>
+<div class="bg-surface-container-low p-3 border border-border-subtle">
+<div class="aspect-square bg-white mb-2 p-2">
+<img class="w-full h-full object-contain" data-alt="A premium, minimalist smartwatch with a dark band and a clean digital face, shown in a high-resolution product photograph. The lighting is cool and professional, emphasizing the device's sleek, modern profile against a soft white background. The image is composed with geometric precision, consistent with a brutalist yet elegant design system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDq62mw7MiX-pe6tRGdpqhHce0mob8ztjNFHgjdBrwoC0a1z7AB5aF_ufeexmfsc15UZZqfCOH4793vNLsbZwsxd4i3Ddwsk1jqzYqr5TvMC3MJdMyact1y4C0o4vbLk_f07CNzYutqk4JSnXPn98tAoPyqu9gGmdezYeH0FkT7wgZFEROAl_t8RIiR_iPG8FbMzF88dEa4QJqV8rsu2dJ9aqUbt-LHD2t3Ra5qoKo6Hu3FE96TFMn9hkcz8A8qVM-ojH5yw2g4i0"/>
+</div>
+<h4 class="font-label-bold text-[12px] leading-tight h-8 overflow-hidden">Smartwatch Series V</h4>
+<p class="text-primary font-bold">R$ 1.450,00</p>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 h-16 bg-surface dark:bg-surface-container border-t border-border-subtle dark:border-outline-variant shadow-lg">
+<a class="flex flex-col items-center justify-center text-primary dark:text-on-primary border-t-2 border-secondary-container py-1 active:scale-95 duration-100" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">policy</span>
+<span class="font-label-bold text-[10px] mt-1">Política</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant py-1 hover:bg-surface-container-low transition-all" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label-bold text-[10px] mt-1">Economia</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant py-1 hover:bg-surface-container-low transition-all" href="#">
+<span class="material-symbols-outlined">theater_comedy</span>
+<span class="font-label-bold text-[10px] mt-1">Cultura</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant py-1 hover:bg-surface-container-low transition-all" href="#">
+<span class="material-symbols-outlined">sports_soccer</span>
+<span class="font-label-bold text-[10px] mt-1">Esportes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant py-1 hover:bg-surface-container-low transition-all" href="#">
+<span class="material-symbols-outlined">memory</span>
+<span class="font-label-bold text-[10px] mt-1">Tecnologia</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interaction for the breaking news marquee
+        const marquee = document.querySelector('.animate-marquee');
+        let pos = 0;
+        function step() {
+            pos -= 0.5;
+            if (pos < -marquee.offsetWidth) pos = window.innerWidth;
+            marquee.style.transform = `translateX(${pos}px)`;
+            requestAnimationFrame(step);
+        }
+        // requestAnimationFrame(step); // Enabled if standard CSS animation is not preferred
+    </script>
+<style>
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        .animate-marquee {
+            animation: marquee 20s linear infinite;
+        }
+    </style>
+</body></html>
