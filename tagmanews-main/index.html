@@ -1,0 +1,201 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- Main Editorial Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+<!-- Left Column: Primary Headline & Core Stories -->
+<div class="lg:col-span-8">
+<article class="mb-12">
+<div class="flex justify-center mb-6">
+<span class="inline-block border-y border-editorial-green-deep py-0.5 px-4 font-label-bold text-[10px] text-editorial-green-deep uppercase tracking-[0.2em]">Política Nacional</span>
+</div>
+<h1 class="font-headline-xl text-center text-primary mb-8 leading-[1.05]">
+                    Congresso aprova regras para emendas parlamentares mas mantém brecha de transparência
+                </h1>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-8">
+<div class="md:col-span-12">
+<div class="relative w-full aspect-[21/9] overflow-hidden grayscale-[30%] hover:grayscale-0 transition-all duration-700">
+<img alt="Congresso Nacional" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCN6PXdRVO_MXI055rQRS23Usy6yi8mCoNHa7Fwj-j2G4eIHdbbumA9SkcEQ-kBEOtruUjEYmQS5Y_DyI-ixZxtTVQryrYUi51yorp_fDTzh1rSETbrfyEuIHXMfoHo00ezCUFqafiJW6OjfT-YoR0dN1nm1T20H6ydS18GV8o_kb0c1q2-bcyPo1REMyrH8bpYgsaaOb3XT7ltB91mL0Ks2gn875uwSnRK6CV8czZlskno3ZfaHsDAZ8C3hIsD6jJJSP0p33O627E"/>
+</div>
+<p class="text-meta text-[10px] mt-2 italic text-outline border-b border-outline-variant pb-2">O plenário da Câmara durante votação do texto-base (Foto: Arquivo/Agência Brasil)</p>
+</div>
+</div>
+<div class="max-w-2xl mx-auto">
+<p class="font-headline-sm text-on-surface mb-6 leading-relaxed italic border-l-4 border-editorial-green-deep pl-6">
+                        Texto-base foi aprovado com 356 votos favoráveis. Críticos afirmam que as novas regras não resolvem a opacidade do "orçamento secreto", mantendo incertezas sobre o destino de bilhões de reais.
+                    </p>
+<div class="flex items-center justify-between text-meta font-meta text-outline mb-10 pt-4 border-t border-outline-variant">
+<span>Por <strong>João Silva</strong>, sucursal Brasília</span>
+<span>Atualizado há 2 horas</span>
+</div>
+</div>
+</article>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 pt-8 border-t border-outline-variant">
+<!-- Recent News Items in a more condensed Grid -->
+<section class="space-y-8">
+<h2 class="font-label-bold text-[11px] uppercase tracking-widest text-editorial-green-deep border-b border-editorial-green-deep inline-block mb-6">Ciência &amp; Tecnologia</h2>
+{% for post in collections.posts %}
+<div class="group cursor-pointer border-b border-outline-variant pb-6">
+<a href="{{ post.url }}">
+<span class="font-label-bold text-[9px] text-outline uppercase tracking-wider">{{ post.category }}</span>
+<h3 class="font-headline-sm text-[20px] mt-1 group-hover:underline">{{ post.title }}</h3>
+</a>
+</div>
+{% endfor %}
+</section>
+<section class="space-y-8 md:hairline-border-left md:pl-8 lg:pl-12">
+<h2 class="font-label-bold text-[11px] uppercase tracking-widest text-editorial-green-deep border-b border-editorial-green-deep inline-block mb-6">Cultura &amp; Economia</h2>
+{% for post in collections.posts %}
+<div class="group cursor-pointer border-b border-outline-variant pb-6">
+<a href="{{ post.url }}">
+<span class="font-label-bold text-[9px] text-outline uppercase tracking-wider">{{ post.category }}</span>
+<h3 class="font-headline-sm text-[20px] mt-1 group-hover:underline">{{ post.title }}</h3>
+</a>
+</div>
+{% endfor %}
+</section>
+</div>
+</div>
+<!-- Right Column: Sidebar / Opinion / Featured -->
+<aside class="lg:col-span-4 space-y-12">
+<!-- Sidebar Headline Section -->
+<section class="bg-surface-off-white p-6 border-t-2 border-editorial-green-deep shadow-sm">
+<div class="mb-6 flex justify-between items-center border-b border-outline-variant pb-2">
+<span class="font-label-bold text-[10px] text-editorial-green-deep uppercase tracking-widest">Especial Tagma</span>
+</div>
+<div class="space-y-4">
+<div class="aspect-video overflow-hidden grayscale-[50%]">
+<img alt="Divórcio Cinza" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDQNXgXAU96gfdzjX4N0m8XYxCA1_bOjCeHaOSkivvclt4WGb3XHZF--Z0imNmBuQQqadFnd1q1y6U6AjBKRy6_KrCk3ocSzpmKlnHpzSyvNUkYMt7DPzf8IAajWwcBWSsF2IKJPQKLFQBnvW19NbsngCtudk-BbkYUneUi9jY9YHNChQo0RTEMNt8GCc0LXrMbGq-gaAFqr3Q0XeUWG29qvTr0huow1Bx1XdubRhZecNcreJ7FOXW7cKSUqoiborarUg6jibdRb4"/>
+</div>
+<h2 class="font-headline-sm text-[24px] leading-tight text-primary">
+                        Divórcio Cinza: Por que casais maduros estão optando pela separação?
+                    </h2>
+<p class="text-body-sm text-on-surface-variant leading-relaxed">
+                        Pesquisa mostra aumento de 150% em divórcios após os 60 anos no Brasil. Especialistas analisam o impacto dessa tendência social.
+                    </p>
+<a class="block text-center font-label-bold text-[10px] uppercase tracking-widest py-3 bg-editorial-green-deep text-white hover:bg-black transition-colors mt-4" href="#">Reportagem Completa</a>
+</div>
+</section>
+<!-- Most Read (Traditional List) -->
+<section class="pt-6 border-t border-outline">
+<h3 class="font-label-bold text-[12px] uppercase tracking-widest mb-6 flex items-center">
+<span class="material-symbols-outlined mr-2 text-editorial-green-deep text-lg">trending_up</span> Mais Lidas
+                </h3>
+<div class="space-y-6">
+<div class="flex gap-4 items-start group cursor-pointer border-b border-outline-variant pb-4">
+<span class="font-headline-md text-outline-variant text-[28px] leading-none">01</span>
+<h4 class="font-label-bold text-sm leading-tight group-hover:text-editorial-green-deep">Entenda a nova lei de diretrizes orçamentárias aprovada hoje</h4>
+</div>
+<div class="flex gap-4 items-start group cursor-pointer border-b border-outline-variant pb-4">
+<span class="font-headline-md text-outline-variant text-[28px] leading-none">02</span>
+<h4 class="font-label-bold text-sm leading-tight group-hover:text-editorial-green-deep">Dólar atinge menor patamar em seis meses após anúncio do BC</h4>
+</div>
+<div class="flex gap-4 items-start group cursor-pointer border-b border-outline-variant pb-4">
+<span class="font-headline-md text-outline-variant text-[28px] leading-none">03</span>
+<h4 class="font-label-bold text-sm leading-tight group-hover:text-editorial-green-deep">Carnaval 2025: Veja a ordem dos desfiles no Rio e SP</h4>
+</div>
+</div>
+</section>
+<!-- Poll / Engagement (Editorial Feel) -->
+<section class="bg-surface-container-low p-6 border border-outline-variant">
+<h3 class="font-label-bold text-[10px] text-secondary uppercase tracking-[0.2em] mb-4">Pesquisa Quaest</h3>
+<h4 class="font-headline-sm text-[18px] mb-6">Aprovação do governo oscila dentro da margem de erro</h4>
+<div class="space-y-4">
+<div>
+<div class="flex justify-between text-meta font-bold mb-1 uppercase tracking-tighter">
+<span>Aprovação</span>
+<span>48%</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-highest">
+<div class="h-full bg-editorial-green-deep w-[48%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-meta font-bold mb-1 uppercase tracking-tighter">
+<span>Desaprovação</span>
+<span>45%</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-highest">
+<div class="h-full bg-error w-[45%]"></div>
+</div>
+</div>
+</div>
+</section>
+</aside>
+</div>
+<!-- Secondary Grid: International, Sports, Culture -->
+<div class="mt-16 pt-12 border-t-2 border-primary grid grid-cols-1 md:grid-cols-3 gap-8">
+<section class="space-y-4">
+<h2 class="font-label-bold text-[11px] uppercase tracking-widest text-editorial-green-deep border-b border-outline mb-4">Internacional</h2>
+<div class="aspect-video overflow-hidden grayscale-[20%] mb-4">
+<img alt="Internacional" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuARc8Q0sXIw1ZIYtk3u3zUw6Rnwj8QTuQZVKOcW3va03l7tOTKqIeiNz0mUrl62ZBgqVBaaHmSX8YT9CTIrBGN6t2GCjeNayAJV6EkT4Uv1hM4URsdx7CHYCAJIlZJvn5fg-eyBtyY2-Ximkpaf6cBYdghPkLmQrGBOZSGjzCWS32JpJ3ljQ16VtjmE_yBjR2wQWVpbE7XliHn6P1JThAzXYH5pRq8auwzaTj9S6Pb_U036A71l70mXDQQoCBZN3OpDWCNDYsPLyHg"/>
+</div>
+<h3 class="font-headline-sm text-[18px] leading-tight">Netanyahu enfrenta novos protestos em Israel após declaração</h3>
+</section>
+<section class="space-y-4 md:border-x md:border-outline-variant md:px-6">
+<h2 class="font-label-bold text-[11px] uppercase tracking-widest text-editorial-green-deep border-b border-outline mb-4">Esportes</h2>
+<div class="flex gap-4 items-start py-2 group cursor-pointer">
+<span class="material-symbols-outlined text-4xl text-error shrink-0">stadium</span>
+<div>
+<h3 class="font-headline-sm text-[18px] leading-tight group-hover:underline">Briga de torcidas em clássico resulta em 15 detidos</h3>
+<p class="mt-2 text-meta text-on-surface-variant">Confusão começou nos arredores da arena antes do apito inicial.</p>
+</div>
+</div>
+<div class="border-t border-outline-variant pt-4">
+<h4 class="font-label-bold text-[12px] group-hover:underline cursor-pointer">Libertadores: veja os confrontos das oitavas de final</h4>
+</div>
+</section>
+<section class="space-y-4">
+<h2 class="font-label-bold text-[11px] uppercase tracking-widest text-editorial-green-deep border-b border-outline mb-4">Celebridades</h2>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-2 group cursor-pointer">
+<img alt="BBB" class="aspect-square object-cover w-full grayscale-[30%] group-hover:grayscale-0 transition-all" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEJcz68sN_nHJ13h6MGgzBq-sFaOqeLtR6-MQDTt0ur3PXx3kGkqBnrU3eR1ioAcu2BtWvEtEIRLDRZmmNN316SOzlEyC1Hu3dMOssDnP4XSk5xKAMilXepS2j2MrCXk3q6xHAk_-SBY_okIQBHE9SBskiBFrXWGCPTzuHM0d97o-oJnEnq8PWFp1RmPnFKxFNO2B929Q4iXJrM6QLUEnZ9b5cbeAFbdAy3uL3lir6RWeeaINUee_e0J15_kSXkixrvfNHYY-9dNM"/>
+<h4 class="font-label-bold text-[11px] leading-tight group-hover:text-editorial-green-deep">BBB 25: Boninho antecipa novidades</h4>
+</div>
+<div class="space-y-2 group cursor-pointer">
+<img alt="Oscar" class="aspect-square object-cover w-full grayscale-[30%] group-hover:grayscale-0 transition-all" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKVN32CvL0cxziGA7yL8xgVuNBLFWmT9koCYTEYPT0Lb-pqnRYFiThjXjCASrKjZ4LOMKekOF5IgIaJAttM8o9KauYBZNzKTRkBLm6QMThZAR7S0H9NMze-eTVuQ11xdbkktkHmeyGCJyUlyC4jLzA6yrU6LBd6-Nfo0t2DVofDaCdcE7cBTrzvCvFivcBmoNp9OfGt_v72c3e2sIXhGHL-uShXFH6WqWb6KQP8xSozsBkHKX1qBiBRaf6XrV4S0kHx90yYsm4cDs"/>
+<h4 class="font-label-bold text-[11px] leading-tight group-hover:text-editorial-green-deep">Oscar 2025: Lista de pré-indicados</h4>
+</div>
+</div>
+</section>
+</div>
+<!-- Commercial Grid Section (Clean & Grid-based) -->
+<section class="mt-24 border-t-4 border-double border-outline pt-12">
+<div class="flex items-center mb-8">
+<span class="material-symbols-outlined mr-2 text-editorial-green-deep">newspaper</span>
+<h2 class="font-label-bold text-[12px] uppercase tracking-[0.2em] text-primary">Tagma Shop • Ofertas do Dia</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-6">
+<!-- Featured Product -->
+<div class="md:col-span-2 lg:col-span-3 border border-outline-variant p-6 flex flex-col md:flex-row gap-6 hover:bg-surface-container-low transition-colors group">
+<div class="shrink-0 w-32 h-32 md:w-48 md:h-48 bg-white p-4">
+<img alt="Smartphone" class="w-full h-full object-contain mix-blend-multiply" src="https://lh3.googleusercontent.com/aida-public/AB6AXuASFccJejyeCon8X-oHlmYMzGt8tKRSLYB_khzky5B9VxQO7v9fXFxXIb2xl-vszB88APigCB6T9Y4B0gC5r9VKvJXOmiAwcEMg6nA9uluHW1O_8i7aNGTNFYv-Zxx405QAODUIfUXcNX3uyfWQT6fib2ZDR-RM-7NlqtqZdj0C2QTKAJBN8WYNKUhvOicBJKo653AoWGr_UG4pRLhkfCpeggqktyfBB4L7UCu6Jwm3dqSYEVQYdr7l6gBc_-Klj4J-kIJcbB5czGE"/>
+</div>
+<div class="flex-1 flex flex-col justify-center">
+<span class="font-label-bold text-[9px] text-secondary uppercase tracking-widest mb-1">Destaque Tech</span>
+<h4 class="font-headline-sm text-[20px] mb-2">Smartphone Premium X1</h4>
+<p class="text-primary font-bold text-2xl mb-4">R$ 4.299,00</p>
+<button class="w-full md:w-auto bg-primary text-white px-8 py-2 font-label-bold text-[10px] uppercase tracking-widest hover:bg-editorial-green-deep transition-colors">Comprar</button>
+</div>
+</div>
+<!-- Secondary Products -->
+<div class="border border-outline-variant p-4 hover:bg-surface-container-low transition-colors">
+<img alt="Headphones" class="w-full aspect-square object-contain mb-4 bg-white p-4 mix-blend-multiply" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZhrFeMrvmrz64ygSMsdYh5_-IpThY379H3xF-TaHp4BBwdgeopwh3bUV4bPD5IVDOxutFv2_r_Uz4jENzDOUGwzJH5gzAc0qDjqFbj6YUWseQmPllw_gags-EEzqvdalr4BiW1wuqTH10xg2gXH32vI0Lr9lL59UcoHIzA65Hh56mBniLsat9HDd643w2ZdXtp6a5ZQt3QB0ZESGYd3FlNMgYoGehQO4bLUQF0Js3wpAamDXMQi98l8GpRGNu61q-g-Vb4EvSKnM"/>
+<h4 class="font-label-bold text-[11px] mb-1">Fone Wireless NC</h4>
+<p class="font-bold text-primary">R$ 899,00</p>
+</div>
+<div class="border border-outline-variant p-4 hover:bg-surface-container-low transition-colors">
+<img alt="Smartwatch" class="w-full aspect-square object-contain mb-4 bg-white p-4 mix-blend-multiply" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDq62mw7MiX-pe6tRGdpqhHce0mob8ztjNFHgjdBrwoC0a1z7AB5aF_ufeexmfsc15UZZqfCOH4793vNLsbZwsxd4i3Ddwsk1jqzYqr5TvMC3MJdMyact1y4C0o4vbLk_f07CNzYutqk4JSnXPn98tAoPyqu9gGmdezYeH0FkT7wgZFEROAl_t8RIiR_iPG8FbMzF88dEa4QJqV8rsu2dJ9aqUbt-LHD2t3Ra5qoKo6Hu3FE96TFMn9hkcz8A8qVM-ojH5yw2g4i0"/>
+<h4 class="font-label-bold text-[11px] mb-1">Smartwatch Series V</h4>
+<p class="font-bold text-primary">R$ 1.450,00</p>
+</div>
+<div class="hidden lg:block border border-outline-variant p-4 hover:bg-surface-container-low transition-colors">
+<img alt="Tablet" class="w-full aspect-square object-contain mb-4 bg-white p-4 mix-blend-multiply" src="https://lh3.googleusercontent.com/aida-public/AB6AXuASFccJejyeCon8X-oHlmYMzGt8tKRSLYB_khzky5B9VxQO7v9fXFxXIb2xl-vszB88APigCB6T9Y4B0gC5r9VKvJXOmiAwcEMg6nA9uluHW1O_8i7aNGTNFYv-Zxx405QAODUIfUXcNX3uyfWQT6fib2ZDR-RM-7NlqtqZdj0C2QTKAJBN8WYNKUhvOicBJKo653AoWGr_UG4pRLhkfCpeggqktyfBB4L7UCu6Jwm3dqSYEVQYdr7l6gBc_-Klj4J-kIJcbB5czGE"/>
+<h4 class="font-label-bold text-[11px] mb-1">Tablet Ultra Tab</h4>
+<p class="font-bold text-primary">R$ 2.199,00</p>
+</div>
+</div>
+</section>
+
+{% endblock %}

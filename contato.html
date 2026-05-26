@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html class="light" lang="pt-BR">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Contato - Tagma</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&family=Literata:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@400;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              surface: "#fcf9f8",
+              "on-surface": "#1c1b1b",
+              "on-surface-variant": "#414940",
+              outline: "#727970",
+              "outline-variant": "#c1c9be",
+              primary: "#001c06",
+              "on-primary": "#ffffff",
+              "primary-container": "#003311",
+              secondary: "#934b00",
+              "secondary-container": "#fd9337",
+              error: "#ba1a1a",
+              "surface-container-low": "#f6f3f2",
+              "surface-off-white": "#fcfcfc",
+              "border-subtle": "#e0e0e0",
+              "editorial-green-deep": "#003311"
+            },
+            fontFamily: {
+              "headline-xl": ["'Hanken Grotesk'", "sans-serif"],
+              "headline-lg": ["'Hanken Grotesk'", "sans-serif"],
+              "headline-md": ["'Hanken Grotesk'", "sans-serif"],
+              "headline-sm": ["'Hanken Grotesk'", "sans-serif"],
+              "body-lg": ["Literata", "serif"],
+              "body-md": ["Literata", "serif"],
+              "body-sm": ["Literata", "serif"],
+              "label-bold": ["'IBM Plex Sans'", "sans-serif"],
+              meta: ["'IBM Plex Sans'", "sans-serif"]
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        body { background-color: #fcf9f8; -webkit-font-smoothing: antialiased; }
+        .container-custom { max-width: 1280px; margin-left: auto; margin-right: auto; }
+        input, textarea, select { border-radius: 0px !important; }
+        button { border-radius: 0px !important; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="font-body-md text-on-surface">
+
+<header class="bg-[#003311] text-white">
+    <!-- Top Utility Bar (More Compact) -->
+    <div class="container-custom px-4 lg:px-8 flex justify-between items-center text-meta font-meta py-1 border-b border-white/10">
+        <div class="flex items-center space-x-4">
+            <span class="hidden md:inline uppercase tracking-widest text-[9px] text-white/60">Hoje, 26 de Maio de 2026</span>
+            <span class="md:hidden text-[9px] text-white/60">26 MAI 2026</span>
+        </div>
+        <div class="flex items-center space-x-4">
+            <button class="hover:text-secondary-container transition-colors uppercase tracking-widest text-[9px] font-bold">Assine</button>
+            <a href="admin.html" class="hover:text-secondary-container transition-colors uppercase tracking-widest text-[9px] font-bold">Entrar</a>
+            <span class="material-symbols-outlined text-[13px] cursor-pointer hover:text-secondary-container transition-colors">search</span>
+        </div>
+    </div>
+    
+    <!-- Logo and Nav (More Compact & Elegant Serif Logo) -->
+    <div class="container-custom px-4 lg:px-8 py-2 md:py-3 flex flex-col md:flex-row md:items-center md:justify-between gap-2 md:gap-4">
+        <div class="flex items-baseline space-x-3">
+            <a class="block font-normal text-[28px] md:text-[32px] tracking-tight text-white lowercase leading-none" style="font-family: 'Literata', serif;" href="index.html">
+                tagma
+            </a>
+            <span class="font-label-bold text-[8px] uppercase tracking-[0.2em] text-white/40">
+                A evolução do jornalismo sério
+            </span>
+        </div>
+        <nav class="w-full md:w-auto overflow-x-auto no-scrollbar">
+            <div class="flex items-center space-x-4 md:space-x-6 font-label-bold text-[10.5px] uppercase tracking-[0.12em] whitespace-nowrap py-1">
+                <a class="hover:text-secondary-container transition-colors border-b border-transparent hover:border-secondary-container pb-0.5" href="index.html#politica">Política</a>
+                <a class="hover:text-secondary-container transition-colors border-b border-transparent hover:border-secondary-container pb-0.5" href="index.html#economia">Economia</a>
+                <a class="hover:text-secondary-container transition-colors border-b border-transparent hover:border-secondary-container pb-0.5" href="index.html#internacional">Internacional</a>
+                <a class="hover:text-secondary-container transition-colors border-b border-transparent hover:border-secondary-container pb-0.5" href="index.html#esportes">Esportes</a>
+                <a class="hover:text-secondary-container transition-colors border-b border-transparent hover:border-secondary-container pb-0.5" href="index.html#cultura">Cultura</a>
+                <a class="hover:text-secondary-container transition-colors border-b border-transparent hover:border-secondary-container pb-0.5" href="index.html#tecnologia">Tecnologia</a>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<main class="container-custom px-4 lg:px-8 py-12 md:py-16">
+    <div class="max-w-[720px] mx-auto">
+        <h1 class="font-headline-lg text-primary font-bold text-[36px] md:text-[42px] leading-tight mb-8 tracking-tight border-b border-border-subtle pb-4">
+            Fale Conosco
+        </h1>
+        
+        <p class="font-body-lg text-on-surface-variant mb-12">
+            Tem alguma sugestão de pauta, dúvida editorial ou proposta comercial? Entre em contato com a equipe do Tagma através do formulário abaixo ou de nossos canais de atendimento direto.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+            <!-- Form: 7 cols -->
+            <div class="md:col-span-7 bg-white border border-border-subtle p-6 space-y-6">
+                <h3 class="font-headline-sm text-lg text-primary font-bold">Enviar Mensagem</h3>
+                
+                <form onsubmit="alert('Obrigado! Sua mensagem foi enviada à nossa redação.'); this.reset(); return false;" class="space-y-4 text-xs font-label-bold">
+                    <div>
+                        <label class="block uppercase tracking-wider text-primary mb-2 font-bold">Nome Completo</label>
+                        <input type="text" required class="w-full border border-border-subtle px-4 py-2.5 bg-surface-container-low focus:outline-none focus:border-primary text-xs" />
+                    </div>
+                    <div>
+                        <label class="block uppercase tracking-wider text-primary mb-2 font-bold">E-mail para Contato</label>
+                        <input type="email" required class="w-full border border-border-subtle px-4 py-2.5 bg-surface-container-low focus:outline-none focus:border-primary text-xs" />
+                    </div>
+                    <div>
+                        <label class="block uppercase tracking-wider text-primary mb-2 font-bold">Assunto</label>
+                        <select required class="w-full border border-border-subtle px-4 py-2.5 bg-surface-container-low focus:outline-none focus:border-primary text-xs">
+                            <option value="editorial">Sugestão de Pauta / Editorial</option>
+                            <option value="comercial">Anúncios / Comercial</option>
+                            <option value="suporte">Suporte Técnico</option>
+                            <option value="outros">Outros Assuntos</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block uppercase tracking-wider text-primary mb-2 font-bold">Mensagem</label>
+                        <textarea required class="w-full border border-border-subtle px-4 py-2.5 bg-surface-container-low focus:outline-none focus:border-primary text-xs h-32 resize-none"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-primary text-white py-3 font-bold uppercase tracking-widest text-xs hover:bg-editorial-green-deep transition-colors">
+                        Enviar Mensagem
+                    </button>
+                </form>
+            </div>
+
+            <!-- Channels: 5 cols -->
+            <div class="md:col-span-5 space-y-6 font-meta">
+                <div class="border border-border-subtle p-6 bg-surface-container-low space-y-4">
+                    <h3 class="font-headline-sm text-lg text-primary font-bold">Redação</h3>
+                    <p class="text-xs text-on-surface-variant leading-relaxed">
+                        Para denúncias, correções ou sugestões de matérias:
+                    </p>
+                    <a href="mailto:pauta@tagmanews.com.br" class="block text-secondary font-bold hover:underline text-sm">pauta@tagmanews.com.br</a>
+                </div>
+
+                <div class="border border-border-subtle p-6 bg-surface-container-low space-y-4">
+                    <h3 class="font-headline-sm text-lg text-primary font-bold">Comercial & Publicidade</h3>
+                    <p class="text-xs text-on-surface-variant leading-relaxed">
+                        Para anunciar no portal ou parcerias de afiliados:
+                    </p>
+                    <a href="mailto:anuncie@tagmanews.com.br" class="block text-secondary font-bold hover:underline text-sm">anuncie@tagmanews.com.br</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="bg-primary text-white py-12 mt-12 pb-24 md:pb-12 border-t border-white/10">
+    <div class="container-custom px-4 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-white/10 pb-12 mb-12">
+            <div class="col-span-1 md:col-span-2">
+                <div class="mb-4 font-normal text-[32px] tracking-tight text-white lowercase leading-none" style="font-family: 'Literata', serif;">
+                    tagma
+                </div>
+                <p class="text-surface-container-low/70 text-sm max-w-sm font-body-sm leading-relaxed">
+                    Informação com precisão, ética e independência. A evolução do antigo portal TN&C, reconstruído com infraestrutura de ponta para levar jornalismo sério a milhões de leitores.
+                </p>
+            </div>
+            <div>
+                <h5 class="font-label-bold uppercase tracking-widest mb-6 text-xs text-white font-bold">Editorias</h5>
+                <ul class="space-y-3 text-surface-container-low/60 text-[11px] font-label-bold uppercase tracking-wider">
+                    <li><a class="hover:text-white transition-colors" href="index.html#politica">Política</a></li>
+                    <li><a class="hover:text-white transition-colors" href="index.html#economia">Economia</a></li>
+                    <li><a class="hover:text-white transition-colors" href="index.html#internacional">Internacional</a></li>
+                    <li><a class="hover:text-white transition-colors" href="index.html#esportes">Esportes</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5 class="font-label-bold uppercase tracking-widest mb-6 text-xs text-white font-bold">Institucional</h5>
+                <ul class="space-y-3 text-surface-container-low/60 text-[11px] font-label-bold uppercase tracking-wider">
+                    <li><a class="hover:text-white transition-colors" href="quem-somos.html">Quem Somos</a></li>
+                    <li><a class="hover:text-white transition-colors" href="politica-de-privacidade.html">Privacidade</a></li>
+                    <li><a class="hover:text-white transition-colors" href="termos-de-uso.html">Termos de Uso</a></li>
+                    <li><a class="hover:text-white transition-colors" href="contato.html">Contato</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="text-center text-[10px] uppercase tracking-[0.3em] text-white/30">
+            © 2026 TAGMA NOTÍCIAS. TODOS OS DIREITOS RESERVADOS.
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

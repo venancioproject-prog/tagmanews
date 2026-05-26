@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html class="light" lang="pt-BR">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Painel do Jornalista - Tagma</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&family=Literata:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@400;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              surface: "#fcf9f8",
+              "on-surface": "#1c1b1b",
+              "on-surface-variant": "#414940",
+              outline: "#727970",
+              "outline-variant": "#c1c9be",
+              primary: "#001c06",
+              "on-primary": "#ffffff",
+              "primary-container": "#003311",
+              secondary: "#934b00",
+              "secondary-container": "#fd9337",
+              error: "#ba1a1a",
+              "surface-container-low": "#f6f3f2",
+              "surface-off-white": "#fcfcfc",
+              "border-subtle": "#e0e0e0",
+              "editorial-green-deep": "#003311"
+            },
+            fontFamily: {
+              "headline-xl": ["'Hanken Grotesk'", "sans-serif"],
+              "headline-lg": ["'Hanken Grotesk'", "sans-serif"],
+              "headline-md": ["'Hanken Grotesk'", "sans-serif"],
+              "headline-sm": ["'Hanken Grotesk'", "sans-serif"],
+              "body-lg": ["Literata", "serif"],
+              "body-md": ["Literata", "serif"],
+              "body-sm": ["Literata", "serif"],
+              "label-bold": ["'IBM Plex Sans'", "sans-serif"],
+              meta: ["'IBM Plex Sans'", "sans-serif"]
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        body { background-color: #fcf9f8; -webkit-font-smoothing: antialiased; }
+        .container-custom { max-width: 1280px; margin-left: auto; margin-right: auto; }
+        input, textarea, select { border-radius: 0px !important; }
+        button { border-radius: 0px !important; }
+    </style>
+</head>
+<body class="font-label-bold text-on-surface">
+
+    <!-- Thin Header -->
+    <header class="bg-[#003311] text-white">
+        <div class="container-custom px-4 lg:px-8 py-3 flex flex-row items-center justify-between">
+            <div class="flex items-baseline space-x-3">
+                <a class="block font-normal text-[24px] tracking-tight text-white lowercase leading-none" style="font-family: 'Literata', serif;" href="index.html">
+                    tagma
+                </a>
+                <span class="text-[9px] uppercase tracking-[0.2em] text-white/40">Painel do Redator</span>
+            </div>
+            <a href="index.html" class="text-xs uppercase tracking-wider text-white/70 hover:text-white flex items-center transition-colors">
+                <span class="material-symbols-outlined text-sm mr-1">arrow_back</span> Voltar ao Site
+            </a>
+        </div>
+    </header>
+
+    <!-- SECTION 1: Login Screen -->
+    <main id="login-section" class="min-h-[80vh] flex items-center justify-center px-4">
+        <div class="w-full max-w-md bg-white border border-border-subtle p-8">
+            <div class="text-center mb-8">
+                <h1 class="font-headline-sm text-2xl text-primary font-bold">Acesso à Redação</h1>
+                <p class="text-xs text-outline mt-2">Digite qualquer usuário e senha para simular o acesso</p>
+            </div>
+            <form onsubmit="handleLogin(event)" class="space-y-6">
+                <div>
+                    <label class="block text-xs uppercase tracking-wider text-primary mb-2 font-bold">Jornalista / E-mail</label>
+                    <input type="text" value="redacao@tagmanews.com" required class="w-full border border-border-subtle px-4 py-3 focus:outline-none focus:border-primary text-sm bg-surface-container-low" />
+                </div>
+                <div>
+                    <label class="block text-xs uppercase tracking-wider text-primary mb-2 font-bold">Senha de Acesso</label>
+                    <input type="password" value="123456" required class="w-full border border-border-subtle px-4 py-3 focus:outline-none focus:border-primary text-sm bg-surface-container-low" />
+                </div>
+                <button type="submit" class="w-full bg-primary text-white py-3 font-bold text-xs uppercase tracking-widest hover:bg-editorial-green-deep transition-colors">
+                    Entrar no Painel
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <!-- SECTION 2: Journalist Dashboard (Hidden by default) -->
+    <main id="dashboard-section" class="container-custom px-4 lg:px-8 py-8 md:py-12 hidden">
+        
+        <!-- Welcome banner -->
+        <div class="flex flex-col md:flex-row md:items-center justify-between pb-6 border-b border-border-subtle mb-8 gap-4">
+            <div>
+                <h1 class="font-headline-md text-3xl text-primary font-bold">Painel Editorial</h1>
+                <p class="text-sm text-outline mt-1">Bem-vindo, <strong>Redator Chefe</strong> • Central de Publicações Tagma</p>
+            </div>
+            <div class="flex gap-4">
+                <button onclick="showNewPostForm()" class="bg-primary text-white px-6 py-3 font-bold text-xs uppercase tracking-widest hover:bg-editorial-green-deep transition-colors flex items-center">
+                    <span class="material-symbols-outlined text-sm mr-2">add</span> Escrever Matéria
+                </button>
+                <button onclick="handleLogout()" class="border border-border-subtle bg-white text-primary px-4 py-3 font-bold text-xs uppercase tracking-widest hover:bg-surface-container-low transition-colors">
+                    Sair
+                </button>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            
+            <!-- Left Side: Table of articles -->
+            <div class="lg:col-span-8 space-y-6">
+                <h2 class="font-label-bold text-sm uppercase tracking-widest text-primary border-b-2 border-primary pb-2 mb-4 font-bold">
+                    Matérias Publicadas
+                </h2>
+                
+                <div class="bg-white border border-border-subtle overflow-x-auto">
+                    <table class="w-full text-left border-collapse text-xs">
+                        <thead>
+                            <tr class="bg-surface-container-low border-b border-border-subtle text-outline font-bold uppercase tracking-wider">
+                                <th class="p-4">Título</th>
+                                <th class="p-4">Categoria</th>
+                                <th class="p-4">Autor</th>
+                                <th class="p-4">Data</th>
+                                <th class="p-4">Origem</th>
+                            </tr>
+                        </thead>
+                        <tbody id="posts-table-body" class="divide-y divide-border-subtle">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Right Side: Writing instructions and LocalStorage info -->
+            <aside class="lg:col-span-4 space-y-6">
+                <div class="border border-border-subtle p-6 bg-white">
+                    <h3 class="font-label-bold text-xs uppercase tracking-widest text-primary border-b border-primary pb-2 mb-4 font-bold">
+                        Como funciona o teste
+                    </h3>
+                    <ul class="space-y-4 text-xs text-on-surface-variant leading-relaxed list-disc pl-4">
+                        <li>Escreva uma matéria preenchendo todos os campos do formulário.</li>
+                        <li>Ao clicar em <strong>"Publicar Matéria"</strong>, ela será salva no armazenamento do seu navegador (`localStorage`).</li>
+                        <li>A página inicial (`index.html`) foi alterada para ler esse armazenamento e injetar as suas matérias no topo do site em tempo real!</li>
+                        <li>Você pode clicar na matéria publicada na Home para ver toda a estrutura de leitura nela.</li>
+                    </ul>
+                </div>
+
+                <div class="border border-border-subtle p-6 bg-surface-container-low">
+                    <h3 class="font-label-bold text-xs uppercase tracking-widest text-primary border-b border-primary pb-2 mb-4 font-bold">
+                        Limpar Testes
+                    </h3>
+                    <p class="text-xs text-outline mb-4 leading-relaxed">
+                        Quer deletar as matérias fictícias que você criou e restaurar o site para o estado original com as 43 notícias padrão?
+                    </p>
+                    <button onclick="clearCustomPosts()" class="w-full bg-error text-white py-2.5 text-xs font-bold uppercase tracking-widest hover:opacity-90 transition-opacity">
+                        Resetar Banco de Dados
+                    </button>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- SECTION 3: Create Post Modal / Card (Hidden by default) -->
+    <main id="writing-section" class="container-custom px-4 lg:px-8 py-8 md:py-12 hidden">
+        <div class="max-w-3xl mx-auto bg-white border border-border-subtle p-8">
+            <div class="flex items-center justify-between pb-6 border-b border-border-subtle mb-8">
+                <h1 class="font-headline-sm text-2xl text-primary font-bold">Nova Matéria</h1>
+                <button onclick="showDashboard()" class="text-xs uppercase tracking-wider text-outline hover:text-primary transition-colors flex items-center">
+                    <span class="material-symbols-outlined text-sm mr-1">close</span> Cancelar
+                </button>
+            </div>
+
+            <form onsubmit="handlePublish(event)" class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider text-primary mb-2 font-bold">Categoria</label>
+                        <select id="post-category" required class="w-full border border-border-subtle px-4 py-3 focus:outline-none focus:border-primary text-sm bg-surface-container-low">
+                            <option value="Política">Política</option>
+                            <option value="Economia">Economia</option>
+                            <option value="Internacional">Internacional</option>
+                            <option value="Esportes">Esportes</option>
+                            <option value="TV e Celebridades">TV e Celebridades</option>
+                            <option value="Música">Música</option>
+                            <option value="Ciência">Ciência</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider text-primary mb-2 font-bold">Autor</label>
+                        <input id="post-author" type="text" placeholder="Nome do Jornalista" required class="w-full border border-border-subtle px-4 py-3 focus:outline-none focus:border-primary text-sm bg-surface-container-low" />
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs uppercase tracking-wider text-primary mb-2 font-bold">Título da Matéria</label>
+                    <input id="post-title" type="text" placeholder="Escreva um título chamativo e impactante" required class="w-full border border-border-subtle px-4 py-3 focus:outline-none focus:border-primary text-sm bg-surface-container-low font-headline-sm" />
+                </div>
+
+                <div>
+                    <label class="block text-xs uppercase tracking-wider text-primary mb-2 font-bold">Resumo / Gravata (Aparece na Home)</label>
+                    <textarea id="post-excerpt" placeholder="Um resumo curto do acontecimento (1 ou 2 frases)..." required class="w-full border border-border-subtle px-4 py-3 focus:outline-none focus:border-primary text-sm bg-surface-container-low h-20 resize-none"></textarea>
+                </div>
+
+                <div>
+                    <label class="block text-xs uppercase tracking-wider text-primary mb-2 font-bold">Link da Imagem de Destaque (URL da internet)</label>
+                    <input id="post-image" type="url" placeholder="https://exemplo.com/foto.jpg" class="w-full border border-border-subtle px-4 py-3 focus:outline-none focus:border-primary text-sm bg-surface-container-low" />
+                    <span class="block text-[10px] text-outline mt-1.5">Deixe em branco para usar uma imagem jornalística padrão automatizada.</span>
+                </div>
+
+                <div>
+                    <label class="block text-xs uppercase tracking-wider text-primary mb-2 font-bold">Corpo da Matéria (Texto Principal)</label>
+                    <textarea id="post-content" placeholder="Escreva o texto completo da matéria aqui..." required class="w-full border border-border-subtle px-4 py-3 focus:outline-none focus:border-primary text-sm bg-surface-container-low h-64 font-body-md leading-relaxed"></textarea>
+                </div>
+
+                <div class="pt-6 border-t border-border-subtle flex gap-4 justify-end">
+                    <button type="button" onclick="showDashboard()" class="px-6 py-3 border border-border-subtle text-primary font-bold text-xs uppercase tracking-widest hover:bg-surface-container-low transition-colors">
+                        Cancelar
+                    </button>
+                    <button type="submit" class="bg-primary text-white px-8 py-3 font-bold text-xs uppercase tracking-widest hover:bg-editorial-green-deep transition-colors">
+                        Publicar Matéria
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer class="bg-primary text-white py-12 mt-12 text-center text-xs border-t border-white/10">
+        <p class="text-white/30 uppercase tracking-[0.25em]">© 2026 TAGMA NOTÍCIAS • ÁREA RESTRITA DA REDAÇÃO</p>
+    </footer>
+
+    <script>
+        // Check if user is logged in
+        if (sessionStorage.getItem('tagma_logged_in') === 'true') {
+            document.getElementById('login-section').classList.add('hidden');
+            document.getElementById('dashboard-section').classList.remove('hidden');
+            loadDashboardData();
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            sessionStorage.setItem('tagma_logged_in', 'true');
+            document.getElementById('login-section').classList.add('hidden');
+            document.getElementById('dashboard-section').classList.remove('hidden');
+            loadDashboardData();
+        }
+
+        function handleLogout() {
+            sessionStorage.removeItem('tagma_logged_in');
+            document.getElementById('login-section').classList.remove('hidden');
+            document.getElementById('dashboard-section').classList.add('hidden');
+            document.getElementById('writing-section').classList.add('hidden');
+        }
+
+        function showNewPostForm() {
+            document.getElementById('dashboard-section').classList.add('hidden');
+            document.getElementById('writing-section').classList.remove('hidden');
+        }
+
+        function showDashboard() {
+            document.getElementById('writing-section').classList.add('hidden');
+            document.getElementById('dashboard-section').classList.remove('hidden');
+            loadDashboardData();
+        }
+
+        function loadDashboardData() {
+            const tableBody = document.getElementById('posts-table-body');
+            tableBody.innerHTML = '<tr><td colspan="5" class="p-4 text-center text-outline">Carregando banco de dados...</td></tr>';
+
+            // Get custom posts from localStorage
+            let customPosts = JSON.parse(localStorage.getItem('tagma_custom_posts') || '[]');
+
+            // Fetch standard posts
+            fetch('posts.json')
+                .then(res => res.json())
+                .then(posts => {
+                    tableBody.innerHTML = '';
+
+                    // Show custom posts first (newest to oldest)
+                    customPosts.forEach(post => {
+                        const tr = document.createElement('tr');
+                        tr.className = 'hover:bg-surface-container-low font-bold text-primary bg-yellow-50/40';
+                        tr.innerHTML = `
+                            <td class="p-4 max-w-xs truncate font-bold"><a href="materia.html?id=${post.id}" class="hover:underline">${post.title}</a></td>
+                            <td class="p-4"><span class="bg-secondary/10 text-secondary px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider">${post.category}</span></td>
+                            <td class="p-4">${post.author}</td>
+                            <td class="p-4">${post.date}</td>
+                            <td class="p-4 text-secondary uppercase font-bold tracking-wider text-[10px]">Jornalista Local</td>
+                        `;
+                        tableBody.appendChild(tr);
+                    });
+
+                    // Show original database posts
+                    posts.forEach(post => {
+                        const tr = document.createElement('tr');
+                        tr.className = 'hover:bg-surface-container-low text-on-surface-variant';
+                        tr.innerHTML = `
+                            <td class="p-4 max-w-xs truncate"><a href="materia.html?id=${post.id}" class="hover:underline">${post.title}</a></td>
+                            <td class="p-4"><span class="bg-primary/5 text-primary px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider">${post.category}</span></td>
+                            <td class="p-4">${post.author || 'Redação'}</td>
+                            <td class="p-4">${post.date || 'Últimas horas'}</td>
+                            <td class="p-4 text-outline uppercase tracking-wider text-[10px]">WP Legado</td>
+                        `;
+                        tableBody.appendChild(tr);
+                    });
+                })
+                .catch(err => {
+                    console.error(err);
+                    tableBody.innerHTML = '<tr><td colspan="5" class="p-4 text-center text-error">Erro ao carregar banco de dados.</td></tr>';
+                });
+        }
+
+        function handlePublish(e) {
+            e.preventDefault();
+
+            const title = document.getElementById('post-title').value;
+            const excerpt = document.getElementById('post-excerpt').value;
+            const author = document.getElementById('post-author').value;
+            const category = document.getElementById('post-category').value;
+            const image = document.getElementById('post-image').value;
+            const content = document.getElementById('post-content').value;
+
+            // Generate clean date string
+            const now = new Date();
+            const dateStr = now.toLocaleDateString('pt-BR', { day: 'numeric', month: 'long', year: 'numeric' }) + 
+                            ' às ' + now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+
+            // Create post object
+            const newPost = {
+                id: 'custom-' + Date.now(),
+                title: title,
+                excerpt: excerpt,
+                author: author,
+                category: category,
+                image: image || null,
+                date: dateStr,
+                content: content,
+                tags: ['Jornalista', 'Local']
+            };
+
+            // Save to localStorage
+            let customPosts = JSON.parse(localStorage.getItem('tagma_custom_posts') || '[]');
+            customPosts.unshift(newPost); // Add at the beginning
+            localStorage.setItem('tagma_custom_posts', JSON.stringify(customPosts));
+
+            alert('Matéria publicada com sucesso! Redirecionando para a Página Inicial.');
+            window.location.href = 'index.html';
+        }
+
+        function clearCustomPosts() {
+            if (confirm('Tem certeza que deseja deletar todas as matérias criadas localmente?')) {
+                localStorage.removeItem('tagma_custom_posts');
+                alert('Matérias deletadas. O portal foi restaurado ao seu estado original.');
+                loadDashboardData();
+            }
+        }
+    </script>
+</body>
+</html>
