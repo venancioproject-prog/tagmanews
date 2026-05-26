@@ -234,8 +234,12 @@ def build_site():
             
     # 6. Select "Destaque da Semana"
     divorcio_candidates = [p for p in posts if "divórcio cinza" in p['title'].lower()]
-    destaque_semana = divorcio_candidates[0] if divorcio_candidates else posts[5]
-    
+    destaque_semana = divorcio_candidates[0] if divorcio_candidates else (posts[5] if len(posts) > 5 else (posts[0] if posts else hero))
+
+    # Pad sections to prevent IndexError on fresh starts
+    while len(highlights) < 3: highlights.append(hero)
+    while len(destaques) < 4: destaques.append(hero)
+    while len(mais_lidas) < 6: mais_lidas.append(hero)
     # 7. Group articles by primary editorial sections
     # Sections: Política, Economia, Internacional, Esportes, TV e Celebridades
     sections = {

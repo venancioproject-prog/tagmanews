@@ -14,7 +14,8 @@
     <meta name="twitter:card" content="summary_large_image"/>
     
     <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&family=Literata:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@400;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries,typography"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script id="tailwind-config">
       tailwind.config = {
         darkMode: "class",
@@ -193,7 +194,7 @@
             <p class="text-meta text-[11px] italic text-outline border-b border-border-subtle pb-3 mb-8" id="article-image-caption">O plenário da Câmara durante votação do text-base (Foto: Arquivo/Agência Brasil)</p>
 
             <!-- Centered Editorial Column (max-w-[720px]) -->
-            <div class="max-w-[720px] mx-auto article-content font-body-lg text-[18px] md:text-[20px] text-on-surface leading-relaxed" id="article-body">
+            <div class="max-w-3xl mx-auto prose prose-lg prose-headings:font-headline-xl prose-a:text-section-tech hover:prose-a:text-primary space-y-6 text-lg leading-relaxed text-on-surface-variant font-body" id="article-body">
                 <p>
                     O plenário da Câmara dos Deputados aprovou, em votação expressiva, o novo marco regulatório para a destinação e fiscalização das emendas parlamentares. O texto-base foi chancelado por 356 votos favoráveis e representa uma tentativa de responder às pressões conjuntas do Supremo Tribunal Federal (STF) e de conselhos de controle fiscal externo.
                 </p>
@@ -446,18 +447,8 @@
         // Generate content paragraphs
         const bodyDiv = document.getElementById('article-body');
         if (post.content) {
-            // If the post has custom written content, display it (split by newlines into paragraphs)
-            const paragraphs = post.content.split('\n').filter(p => p.trim() !== '');
-            let bodyHTML = '';
-            paragraphs.forEach((p, idx) => {
-                bodyHTML += `<p>${p}</p>`;
-                if (idx === 1 && paragraphs.length > 2) {
-                    bodyHTML += `<blockquote class="my-8 border-l-4 border-secondary pl-6 py-2 italic font-headline-sm text-[22px] text-secondary">
-                        "A informação com ética e responsabilidade social é o norte do jornalismo sério."
-                    </blockquote>`;
-                }
-            });
-            bodyDiv.innerHTML = bodyHTML;
+            // Using marked.js for proper markdown formatting
+            bodyDiv.innerHTML = marked.parse(post.content);
         } else {
             // Fallback for database posts without full content
             const p1 = post.excerpt || `A reportagem especial do portal **Tagma** traz uma cobertura completa sobre o tema: ${post.title}. Os desdobramentos recentes apontam para reflexos imediatos no setor e demandam atenção do público e de especialistas.`;

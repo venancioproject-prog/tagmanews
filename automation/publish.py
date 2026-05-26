@@ -66,7 +66,7 @@ def call_groq_api(prompt, dense=False):
     if not GROQ_API_KEY:
         raise ValueError("GROQ_API_KEY environment variable is not set.")
         
-    model = "llama-3.3-70b-specdec" if dense else "llama-3.1-8b-instant"
+    model = "llama-3.3-70b-versatile" if dense else "llama-3.1-8b-instant"
     url = "https://api.groq.com/openai/v1/chat/completions"
     
     payload = {
@@ -243,6 +243,7 @@ tags: {json.dumps(tags)}
         "category": category,
         "tags": tags,
         "excerpt": excerpt,
+        "content": content,
         "author": author,
         "date": post_date
     }

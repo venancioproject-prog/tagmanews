@@ -56,7 +56,7 @@ def generate_ibge_report():
     """
     
     try:
-        response_text = call_groq_api(prompt, dense=True) # use dense model for demographic/socioeconomic analysis
+        response_text = call_groq_api(prompt, dense=False) # use lightweight model (dense model was decommissioned)
         data = json.loads(response_text)
         
         title = data['title']
