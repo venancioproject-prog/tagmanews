@@ -34,7 +34,7 @@ def generate_games_report():
     {{
         "title": "Título da matéria (ex: 'Análise técnica de [Título do Jogo] avalia desempenho e mecânicas no [Plataforma]')",
         "excerpt": "Um resumo em uma frase da análise do jogo (máximo 160 caracteres)",
-        "content": "O texto jornalístico completo dividido em pelo menos 3 parágrafos explicativos (sem subtítulos, apenas tags de parágrafo normais ou linhas vazias)",
+        "content": "Um artigo jornalístico profissional, extenso e aprofundado (mínimo de 500 palavras), formatado obrigatoriamente em Markdown autêntico (usando hashtags ## para subtítulos reais, listas com -, e texto em negrito com **). O texto DEVE conter manchete atrativa no H1, lide jornalístico, análise de contexto profundo, desdobramentos, impacto na sociedade ou mercado, e citações (entre aspas) simuladas de especialistas ou entidades para dar credibilidade e peso à matéria. Escreva com excelência como um repórter premiado de um grande portal de credibilidade (como G1, Reuters ou Estadão).",
         "tags": ["games", "jogos eletrônicos", "steam", "review", "tecnologia"],
         "keyword_imagem_ingles": "query em inglês curta de 2 palavras para buscar foto no Pexels (ex: 'video game' ou 'gaming controller')"
     }}

@@ -32,7 +32,7 @@ def generate_product_review():
     {{
         "title": "Título da matéria "{{product['title']}}" (objetivo e informativo)",
         "excerpt": "Resumo curto (máx 160 caracteres) sobre o produto e utilidade",
-        "content": "Texto jornalístico dividido em ao menos 3 parágrafos que descrevem especificações, preço, e aplicação prática",
+        "content": "Um artigo jornalístico profissional, extenso e aprofundado (mínimo de 500 palavras), formatado obrigatoriamente em Markdown autêntico (usando hashtags ## para subtítulos reais, listas com -, e texto em negrito com **). O texto DEVE conter manchete atrativa no H1, lide jornalístico, análise de contexto profundo, desdobramentos, impacto na sociedade ou mercado, e citações (entre aspas) simuladas de especialistas ou entidades para dar credibilidade e peso à matéria. Escreva com excelência como um repórter premiado de um grande portal de credibilidade (como G1, Reuters ou Estadão).",
         "tags": ["review", "produto", "consumidor", "tecnologia", "afiliado"],
         "keyword_imagem_ingles": "query em inglês curta de 2 palavras para buscar foto no Pexels (ex: 'product review' ou 'gadget')"
     }}

@@ -32,7 +32,7 @@ def generate_saas_affiliate():
     {{
         "title": "Título da matéria "{{product['name']}}" (informativo e direto)",
         "excerpt": "Resumo curto (máx 160 caracteres) sobre a proposta e valor do SaaS",
-        "content": "Texto jornalístico dividido em ao menos 3 parágrafos que detalham funcionalidades, uso prático e preço",
+        "content": "Um artigo jornalístico profissional, extenso e aprofundado (mínimo de 500 palavras), formatado obrigatoriamente em Markdown autêntico (usando hashtags ## para subtítulos reais, listas com -, e texto em negrito com **). O texto DEVE conter manchete atrativa no H1, lide jornalístico, análise de contexto profundo, desdobramentos, impacto na sociedade ou mercado, e citações (entre aspas) simuladas de especialistas ou entidades para dar credibilidade e peso à matéria. Escreva com excelência como um repórter premiado de um grande portal de credibilidade (como G1, Reuters ou Estadão).",
         "tags": ["saas", "software", "affiliate", "technology", "review"],
         "keyword_imagem_ingles": "query em inglês curta de 2 palavras para buscar foto no Pexels (ex: 'software interface' ou 'cloud service')"
     }}

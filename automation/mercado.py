@@ -52,7 +52,7 @@ def generate_market_report():
     {{
         "title": "Título da matéria (jornalístico e sem sensacionalismo, ex: 'Ibovespa fecha em [alta/queda] de X% com atenção a commodities')",
         "excerpt": "Um resumo curto em uma frase do boletim financeiro (máximo 160 caracteres)",
-        "content": "O texto jornalístico completo dividido em pelo menos 3 parágrafos explicativos (sem subtítulos, apenas tags de parágrafo normais ou linhas vazias)",
+        "content": "Um artigo jornalístico profissional, extenso e aprofundado (mínimo de 500 palavras), formatado obrigatoriamente em Markdown autêntico (usando hashtags ## para subtítulos reais, listas com -, e texto em negrito com **). O texto DEVE conter manchete atrativa no H1, lide jornalístico, análise de contexto profundo, desdobramentos, impacto na sociedade ou mercado, e citações (entre aspas) simuladas de especialistas ou entidades para dar credibilidade e peso à matéria. Escreva com excelência como um repórter premiado de um grande portal de credibilidade (como G1, Reuters ou Estadão).",
         "tags": ["mercado financeiro", "ibovespa", "dólar", "bolsa de valores", "economia"],
         "keyword_imagem_ingles": "query em inglês curta de 2 palavras para buscar foto no Pexels (ex: 'stock market' ou 'trading finance')"
     }}

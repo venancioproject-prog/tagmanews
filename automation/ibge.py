@@ -49,7 +49,7 @@ def generate_ibge_report():
     {{
         "title": "Título da matéria (ex: '[Tema] reflete mudanças na estrutura econômica do país')",
         "excerpt": "Um resumo em uma frase dos dados analisados (máximo 160 caracteres)",
-        "content": "O texto jornalístico completo dividido em pelo menos 3 parágrafos explicativos (sem subtítulos, apenas tags de parágrafo normais ou linhas vazias)",
+        "content": "Um artigo jornalístico profissional, extenso e aprofundado (mínimo de 500 palavras), formatado obrigatoriamente em Markdown autêntico (usando hashtags ## para subtítulos reais, listas com -, e texto em negrito com **). O texto DEVE conter manchete atrativa no H1, lide jornalístico, análise de contexto profundo, desdobramentos, impacto na sociedade ou mercado, e citações (entre aspas) simuladas de especialistas ou entidades para dar credibilidade e peso à matéria. Escreva com excelência como um repórter premiado de um grande portal de credibilidade (como G1, Reuters ou Estadão).",
         "tags": ["sociedade", "ibge", "censo", "economia", "dados demograficos"],
         "keyword_imagem_ingles": "query em inglês curta de 2 palavras para buscar foto no Pexels (ex: 'brazil city' ou 'demographic census')"
     }}
