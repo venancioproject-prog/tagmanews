@@ -93,35 +93,44 @@ def curate_and_publish(category, count=1):
             
         print(f"Curating article: {original_title}")
         
+        # Load advanced guidelines
+        guidelines_path = os.path.join(os.path.dirname(__file__), 'prompt_guidelines.txt')
+        advanced_guidelines = ""
+        if os.path.exists(guidelines_path):
+            with open(guidelines_path, 'r', encoding='utf-8') as gf:
+                advanced_guidelines = gf.read()
+
         # Build strict EEAT Prompt
         prompt = f"""
+{advanced_guidelines}
+
 Atue como um jornalista experiente e curador de conteúdo sênior de um portal de notícias de alta credibilidade (ex: G1, Reuters, Estadão).
-Sua tarefa é analisar a notícia bruta abaixo e escrever uma reportagem original, completa e aprofundada. O Google valoriza conteúdo EEAT (Experiência, Especialidade, Autoridade, Confiança). Não faça um resumo raso ou clichê.
+Sua tarefa é analisar a notícia bruta abaixo e escrever uma reportagem original, completa e aprofundada, APLICANDO RIGOROSAMENTE todas as regras de estilo e táticas avançadas (anti-detecção e tom cético) listadas acima.
 
 FATO BRUTO:
 Título Original: {original_title}
 Descrição Original/Resumo: {item['description']}
 Fonte: {item['link']}
 
-INSTRUÇÕES DE REDAÇÃO (CRÍTICO PARA ADSENSE):
-1. **Análise Crítica:** Identifique os pontos factuais mais importantes. Ignore opiniões ou ruídos.
-2. **Reescrita Original:** NUNCA copie frases inteiras do original. Escreva com suas próprias palavras. Adicione contexto, explique o impacto desse fato para a sociedade/mercado e faça perguntas retóricas para engajar o leitor. Inclua citações simuladas/parafraseadas verossímeis de especialistas para dar peso à matéria.
-3. **Tom e Voz:** Informativo, profissional, isento e cativante. Evite adjetivos emocionais e chavões de IA (como "Em suma", "Explore essa jornada").
-4. **Formato Exigido:** O artigo DEVE ter mais de 500 palavras e usar marcações Markdown autênticas: H1 para título, H2/H3 para subtítulos, negritos (**) em termos chave, e listas se apropriado.
+INSTRUÇÕES DE REDAÇÃO ESTRUTURAL (CRÍTICO PARA ADSENSE):
+1. **Análise Crítica e Contexto:** Identifique os fatos concretos. Explique o impacto do fato. Adicione perguntas retóricas para engajar. Inclua citações simuladas/parafraseadas verossímeis de especialistas.
+2. **Sem Travessões:** Siga a regra de estilo estrita de JAMAIS usar travessões.
+3. **Tom Orgânico e Cético:** Aplique o tom irônico e direto exigido nas regras.
+4. **Formato Exigido:** O artigo DEVE ter mais de 500 palavras e usar marcações Markdown autênticas (H1 para título, H2/H3 para subtítulos, negritos em termos chave). Não use listas lineares previsíveis.
 5. **Estrutura do Texto:**
    - Manchete atrativa
    - Lide (Introdução direta)
-   - Desenvolvimento aprofundado com subtítulos (O que aconteceu, Impacto, Contexto Histórico)
-   - Conclusão / Desdobramentos futuros
+   - Desenvolvimento aprofundado com os blocos variados exigidos
+   - Conclusão / Provocação em aberto (NÃO RECAPITULE)
    - **Fontes e Referências:** Obrigatório adicionar no final: "Fonte: [Nome do Veículo Original]({item['link']})"
 
 Você deve retornar ESTRITAMENTE um objeto JSON válido (sem tags markdown na borda do JSON). Siga esta estrutura exata:
 {{
     "title": "Novo título magnético e jornalístico (sem sensacionalismo)",
-    "excerpt": "Linha fina / subtítulo em uma frase impactante (máx 160 caracteres)",
-    "content": "O texto completo da reportagem formatado rigorosamente em Markdown autêntico (mínimo de 500 palavras, com H2, H3, negritos e seção de fontes no final).",
-    "tags": ["array", "de", "strings", "contendo", "de 3 a 5 palavras-chave", "limpas", "curtas", "em minúsculas", "e muito precisas"],
-    "keyword_imagem_ingles": "query em inglês curta (2 palavras) para o Pexels que defina bem o contexto visual da matéria"
+    "excerpt": "Linha fina / subtítulo impactante (máx 160 caracteres)",
+    "content": "O texto completo da reportagem formatado rigorosamente em Markdown autêntico (mínimo de 500 palavras, H2, H3, sem usar travessões).",
+    "tags": ["array", "de", "strings", "contendo", "de 3 a 5 palavras-chave", "limpas", "curtas", "em minúsculas", "e precisas"],
+    "keyword_imagem_ingles": "query em inglês curta (2 palavras) para o Pexels"
 }}
 """
         try:

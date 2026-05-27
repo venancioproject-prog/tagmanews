@@ -1,14 +1,18 @@
-import random
+import sys
+import time
 from rss_news import curate_and_publish, RSS_FEEDS
 
 def main():
-    # Pick 2 random categories to curate 1 article each
+    print("--- Inciando Boot/Auto-Curation Geral ---")
     categories = list(RSS_FEEDS.keys())
-    chosen_cats = random.sample(categories, 2)
     
-    for cat in chosen_cats:
-        print(f"--- Auto Curation: {cat} ---")
+    for cat in categories:
+        print(f"\n--- Gerando matéria para o eixo: {cat} ---")
         curate_and_publish(cat, count=1)
+        
+        # Pausa de segurança de 15 segundos para evitar bloqueio 429 da API do Groq
+        print("Pausa de 15 segundos antes da próxima editoria...")
+        time.sleep(15)
         
 if __name__ == "__main__":
     main()
