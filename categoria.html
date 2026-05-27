@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html class="light" lang="pt-BR">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Tagma - Categoria</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&family=Literata:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@400;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              surface: "#fcf9f8",
+              "on-surface": "#1c1b1b",
+              "on-surface-variant": "#414940",
+              outline: "#727970",
+              "outline-variant": "#c1c9be",
+              primary: "#001c06",
+              "on-primary": "#ffffff",
+              "primary-container": "#003311",
+              secondary: "#934b00",
+              "secondary-container": "#fd9337",
+              error: "#ba1a1a",
+              "surface-container-low": "#f6f3f2",
+              "surface-off-white": "#fcfcfc",
+              "border-subtle": "#e0e0e0",
+              "editorial-green-deep": "#003311",
+              "section-culture": "#c36",
+              "section-tech": "#0693e3",
+              "section-finance": "#fcb900"
+            },
+            fontFamily: {
+              "headline-xl": ["'Hanken Grotesk'", "sans-serif"],
+              "headline-lg": ["'Hanken Grotesk'", "sans-serif"],
+              "headline-sm": ["'Literata'", "serif"],
+              "body": ["'Literata'", "serif"],
+              "body-lg": ["'Literata'", "serif"],
+              "label-bold": ["'Hanken Grotesk'", "sans-serif"],
+              "meta": ["'IBM Plex Sans'", "sans-serif"]
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      .container-custom { max-width: 1440px; margin: 0 auto; }
+      body { background-color: theme('colors.surface'); color: theme('colors.on-surface'); }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+
+<!-- Cabeçalho (Mesmo do Site) -->
+<header class="border-b-4 border-primary bg-surface sticky top-0 z-50 shadow-[0_4px_12px_rgba(0,0,0,0.05)]">
+    <div class="container-custom px-4 lg:px-8 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex items-center">
+            <a href="index.html" class="flex items-center group">
+                <span class="font-headline-xl font-bold text-3xl md:text-4xl tracking-tight text-primary uppercase group-hover:text-primary-container transition-colors">tagma</span>
+                <span class="ml-3 border-l border-outline-variant pl-3 hidden md:block text-[11px] font-meta italic text-on-surface-variant max-w-[150px] leading-tight">
+                    A evolução do jornalismo sério
+                </span>
+            </a>
+        </div>
+        <nav class="w-full md:w-auto overflow-x-auto no-scrollbar">
+            <div class="flex items-center space-x-4 md:space-x-6 font-label-bold text-[10.5px] uppercase tracking-[0.12em] whitespace-nowrap py-1">
+                <a class="hover:text-secondary-container transition-colors border-b border-transparent hover:border-secondary-container pb-0.5" href="categoria.html?c=politica">Política</a>
+                <a class="hover:text-secondary-container transition-colors border-b border-transparent hover:border-secondary-container pb-0.5" href="categoria.html?c=economia">Economia</a>
+                <a class="hover:text-secondary-container transition-colors border-b border-transparent hover:border-secondary-container pb-0.5" href="categoria.html?c=internacional">Internacional</a>
+                <a class="hover:text-secondary-container transition-colors border-b border-transparent hover:border-secondary-container pb-0.5" href="categoria.html?c=esportes">Esportes</a>
+                <a class="hover:text-secondary-container transition-colors border-b border-transparent hover:border-secondary-container pb-0.5" href="categoria.html?c=cultura">Cultura</a>
+                <a class="hover:text-secondary-container transition-colors border-b border-transparent hover:border-secondary-container pb-0.5" href="categoria.html?c=tecnologia">Tecnologia</a>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<main class="container-custom px-4 lg:px-8 py-10 flex-grow">
+    
+    <div class="mb-10 border-b border-border-subtle pb-4">
+        <h1 id="category-title" class="font-headline-xl font-extrabold text-4xl text-primary capitalize">Carregando...</h1>
+        <p class="font-body text-on-surface-variant mt-2 text-lg">Acompanhe as últimas atualizações do núcleo.</p>
+    </div>
+
+    <div id="articles-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Articles injected via JS -->
+    </div>
+
+    <div id="no-articles-msg" class="hidden py-20 text-center">
+        <p class="font-body text-xl text-outline">Ainda não há matérias publicadas nesta categoria.</p>
+    </div>
+
+</main>
+
+<footer class="bg-primary text-surface mt-auto py-12 border-t-8 border-secondary">
+    <div class="container-custom px-4 lg:px-8">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-center md:text-left">
+                <span class="font-headline-xl font-bold text-3xl tracking-tight uppercase">tagma</span>
+                <p class="font-meta text-[13px] text-surface-container-low mt-2">© 2026 Portal Tagma. Todos os direitos reservados.</p>
+            </div>
+            <div class="flex space-x-6 font-label-bold text-[11px] uppercase tracking-wider text-surface-container-low">
+                <a class="hover:text-white transition-colors" href="quem-somos.html">Expediente</a>
+                <a class="hover:text-white transition-colors" href="politica-de-privacidade.html">Privacidade</a>
+                <a class="hover:text-white transition-colors" href="termos-de-uso.html">Termos</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    document.addEventListener("DOMContentLoaded", async () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        let categoryParam = urlParams.get('c');
+        
+        const categoryMap = {
+            'politica': 'Política',
+            'economia': 'Economia',
+            'internacional': 'Internacional',
+            'esportes': 'Esportes',
+            'cultura': 'Cultura',
+            'tecnologia': 'Tecnologia'
+        };
+
+        const targetCategory = categoryMap[categoryParam] || 'Política';
+        document.getElementById('category-title').textContent = targetCategory;
+
+        try {
+            const response = await fetch('posts.json');
+            if (!response.ok) throw new Error('Falha ao buscar posts');
+            const posts = await response.json();
+            
+            // Filter posts by exact category match
+            const filteredPosts = posts.filter(p => p.category.toLowerCase() === targetCategory.toLowerCase());
+            
+            const grid = document.getElementById('articles-grid');
+            
+            if (filteredPosts.length === 0) {
+                document.getElementById('no-articles-msg').classList.remove('hidden');
+                return;
+            }
+
+            filteredPosts.forEach(post => {
+                const articleHTML = `
+                    <article class="flex flex-col group cursor-pointer bg-white p-4 rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.05)] hover:shadow-lg transition-all" onclick="window.location.href='${post.url}'">
+                        <div class="aspect-[16/10] overflow-hidden rounded-lg mb-4 bg-surface-container-low">
+                            <img src="${post.image}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" alt="${post.title}">
+                        </div>
+                        <span class="font-label-bold text-[10px] uppercase tracking-widest text-editorial-green-deep mb-2">${post.category}</span>
+                        <h3 class="font-headline-lg font-bold text-xl leading-tight text-on-surface group-hover:text-primary-container transition-colors mb-3">
+                            ${post.title}
+                        </h3>
+                        <p class="font-body text-on-surface-variant text-[15px] leading-relaxed line-clamp-3 mb-4 flex-grow">
+                            ${post.excerpt}
+                        </p>
+                        <div class="flex items-center text-meta text-[11px] text-outline mt-auto">
+                            <span>Por ${post.author || 'Redação Tagma'}</span>
+                            <span class="mx-2">•</span>
+                            <span>${post.date}</span>
+                        </div>
+                    </article>
+                `;
+                grid.insertAdjacentHTML('beforeend', articleHTML);
+            });
+
+        } catch (error) {
+            console.error("Error rendering category page:", error);
+            document.getElementById('no-articles-msg').classList.remove('hidden');
+            document.getElementById('no-articles-msg').innerHTML = `<p class="font-body text-xl text-error">Erro ao carregar as matérias desta categoria.</p>`;
+        }
+    });
+</script>
+</body>
+</html>

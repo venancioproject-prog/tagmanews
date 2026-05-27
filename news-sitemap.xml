@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://venancioproject-prog.github.io/tagma-portal/materia.html?id=auto-1779840346</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tagma Notícias</news:name>
+        <news:language>pt</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-26</news:publication_date>
+      <news:title><![CDATA[A Desigualdade Social no Brasil: Uma Questão Permanente]]></news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://venancioproject-prog.github.io/tagma-portal/materia.html?id=auto-1779840343</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Tagma Notícias</news:name>
+        <news:language>pt</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-26</news:publication_date>
+      <news:title><![CDATA[Avião Brasileiro Transporta Alimentos entre Cidades Bolivianas em Contexto de Crise]]></news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://venancioproject-prog.github.io/tagma-portal/materia.html?id=auto-1779839238</loc>
     <news:news>
       <news:publication>
