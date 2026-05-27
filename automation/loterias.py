@@ -71,18 +71,18 @@ Prêmio Estimado para o Próximo Concurso: R$ {premio_estimado:,.2f}
 
 INSTRUÇÕES DE REDAÇÃO (CRÍTICO PARA ADSENSE E EEAT):
 1. Informe os números exatos e se a loteria acumulou. Explique rapidamente como funciona essa loteria e a probabilidade matemática.
-2. Adicione contexto socioeconômico sobre o que esse valor representa na vida dos brasileiros ou inclua uma citação simulada verossímil de um economista sobre educação financeira ou destinação de prêmios.
+2. Adicione contexto socioeconômico breve sobre o prêmio.
 3. Não faça uma lista enumerada simples com os números. Incorpore os dados organicamente no texto.
-4. O artigo DEVE ter mais de 500 palavras e usar marcações Markdown autênticas (H1, H2, negritos). 
+4. O artigo deve ser direto, objetivo, não repita os mesmos parágrafos e informações. Tenha no máximo 250 palavras. Use marcações Markdown autênticas (H2, negritos). 
 5. Cumpra a promessa de entregar uma dica de planejamento no final.
 
 Você deve retornar ESTRITAMENTE um objeto JSON válido (sem tags markdown na borda do JSON). Siga esta estrutura exata:
 {{
     "title": "Novo título magnético e jornalístico (sem sensacionalismo, incluindo o nome {name})",
     "excerpt": "Linha fina / subtítulo impactante com os números centrais",
-    "content": "O texto completo da reportagem formatado rigorosamente em Markdown autêntico (mínimo 500 palavras, H2, H3, sem usar travessões).",
+    "content": "O texto da reportagem formatado em Markdown autêntico (máximo 250 palavras, seja conciso, NÃO REPITA OS NÚMEROS E DADOS VÁRIAS VEZES, H2, sem usar travessões).",
     "tags": ["{name.lower()}", "sorteio", "loterias da caixa", "resultado"],
-    "keyword_imagem_ingles": "lottery ticket money"
+    "keyword_imagem_ingles": "Gere UMA keyword em inglês única e conceitual relacionada ao texto (ex: rich luxury, safe vault, brazilian currency, geometric shapes success). NÃO USE lottery ticket money."
 }}
 """
         

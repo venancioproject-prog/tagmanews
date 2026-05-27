@@ -45,25 +45,27 @@ def get_existing_titles():
                 return []
     return []
 
+import requests
+
 def fetch_rss_items(url):
-    req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
     items = []
     try:
-        with urllib.request.urlopen(req, timeout=15) as response:
-            xml_data = response.read()
-            root = ET.fromstring(xml_data)
-            channel = root.find('channel')
-            if channel is not None:
-                for item in channel.findall('item'):
-                    title = item.find('title')
-                    desc = item.find('description')
-                    link = item.find('link')
-                    if title is not None and desc is not None:
-                        items.append({
-                            'title': title.text,
-                            'description': desc.text,
-                            'link': link.text if link is not None else ""
-                        })
+        response = requests.get(url, timeout=15, headers={'User-Agent': 'Mozilla/5.0'})
+        response.raise_for_status()
+        xml_data = response.content
+        root = ET.fromstring(xml_data)
+        channel = root.find('channel')
+        if channel is not None:
+            for item in channel.findall('item'):
+                title = item.find('title')
+                desc = item.find('description')
+                link = item.find('link')
+                if title is not None and desc is not None:
+                    items.append({
+                        'title': title.text,
+                        'description': desc.text,
+                        'link': link.text if link is not None else ""
+                    })
     except Exception as e:
         print(f"Error fetching {url}: {e}")
     return items
@@ -113,14 +115,13 @@ Descrição Original/Resumo: {item['description']}
 Fonte: {item['link']}
 
 INSTRUÇÕES DE REDAÇÃO ESTRUTURAL (CRÍTICO PARA ADSENSE):
-1. **Análise Crítica e Contexto:** Identifique os fatos concretos. Explique o impacto do fato. Adicione perguntas retóricas para engajar. Inclua citações simuladas/parafraseadas verossímeis de especialistas.
+1. **Análise Crítica e Contexto:** Identifique os fatos concretos. Explique o impacto do fato. Adicione perguntas retóricas para engajar.
 2. **Sem Travessões:** Siga a regra de estilo estrita de JAMAIS usar travessões.
-3. **Tom Orgânico e Cético:** Aplique o tom irônico e direto exigido nas regras.
-4. **Formato Exigido:** O artigo DEVE ter mais de 500 palavras e usar marcações Markdown autênticas (H1 para título, H2/H3 para subtítulos, negritos em termos chave). Não use listas lineares previsíveis.
+3. **Tom Orgânico e Cético:** Aplique o tom irônico e direto exigido nas regras. Evite enrolação.
+4. **Formato Exigido:** O artigo DEVE ter entre 250 e 400 palavras. Jamais repita os mesmos parágrafos ou encha linguiça. Use marcações Markdown autênticas (H2/H3 para subtítulos, negritos em termos chave).
 5. **Estrutura do Texto:**
-   - Manchete atrativa
    - Lide (Introdução direta)
-   - Desenvolvimento aprofundado com os blocos variados exigidos
+   - Desenvolvimento objetivo com blocos variados
    - Conclusão / Provocação em aberto (NÃO RECAPITULE)
    - **Fontes e Referências:** Obrigatório adicionar no final: "Fonte: [Nome do Veículo Original]({item['link']})"
 
@@ -128,9 +129,9 @@ Você deve retornar ESTRITAMENTE um objeto JSON válido (sem tags markdown na bo
 {{
     "title": "Novo título magnético e jornalístico (sem sensacionalismo)",
     "excerpt": "Linha fina / subtítulo impactante (máx 160 caracteres)",
-    "content": "O texto completo da reportagem formatado rigorosamente em Markdown autêntico (mínimo de 500 palavras, H2, H3, sem usar travessões).",
-    "tags": ["array", "de", "strings", "contendo", "de 3 a 5 palavras-chave", "limpas", "curtas", "em minúsculas", "e precisas"],
-    "keyword_imagem_ingles": "query em inglês curta (2 palavras) para o Pexels"
+    "content": "O texto completo da reportagem em Markdown (seja conciso e coeso, H2, sem travessões, NUNCA REPITA PARÁGRAFOS).",
+    "tags": ["array", "de", "strings", "contendo", "de 3 a 5 palavras-chave", "curtas"],
+    "keyword_imagem_ingles": "query em inglês curta e CONCEITUAL (2 palavras) para ilustrar a matéria no Pexels (evite termos genéricos como news, jornalism)"
 }}
 """
         try:
