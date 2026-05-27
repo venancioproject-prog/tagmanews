@@ -191,63 +191,50 @@ def build_site():
             
         return f'src="{local_path}" data-fallback="{wayback_fallback}" onerror="this.onerror=null; this.src=this.dataset.fallback;"'
 
-    # 2. Select Hero Post (Emendas Parlamentares)
-    hero_candidates = [p for p in posts if "emendas parlamentares" in p['title'].lower()]
-    hero = hero_candidates[0] if hero_candidates else posts[0]
+    # 2. Select Hero Post (Tag 'Capa')
+    hero_candidates = [p for p in posts if any(t.lower() == 'capa' for t in p.get('tags', []))]
+    hero = hero_candidates[0] if hero_candidates else (posts[0] if posts else None)
     
     # 3. Select Secondary Highlights (3 next to hero)
     # Exclude hero
     remaining = [p for p in posts if p['title'] != hero['title']]
     
-    # Select Science/Lua de Sangue, Djonga, Imposto de Alimentos
-    highlights = []
-    for title_kw in ["lua de sangue", "djonga", "importação de alimentos"]:
-        matches = [p for p in remaining if title_kw in p['title'].lower()]
-        if matches:
-            highlights.append(matches[0])
-            remaining = [p for p in remaining if p['title'] != matches[0]['title']]
+    # 3. Select Secondary Highlights (Últimas Notícias - 3 posts)
+    highlights = remaining[:3]
+    remaining = remaining[3:]
             
     # Fill highlights to 3 if needed
     while len(highlights) < 3 and remaining:
         highlights.append(remaining.pop(0))
         
-    # 4. Select Destaques Carousel/Row posts (4 posts)
-    # Carla Marins, Ainda Estou Aqui, Oruam, Nuno Leal Maia
+    # 4. Select Destaques Carousel/Row posts (Cultura & Tecnologia)
     destaques = []
-    for title_kw in ["carla marins", "ainda estou aqui", "oruam", "nuno leal"]:
-        matches = [p for p in remaining if title_kw in p['title'].lower()]
-        if matches:
-            destaques.append(matches[0])
-            remaining = [p for p in remaining if p['title'] != matches[0]['title']]
+    for p in remaining:
+        if p['category'] in ['Cultura', 'Tecnologia'] and len(destaques) < 4:
+            destaques.append(p)
+    # Remove selected from remaining
+    remaining = [p for p in remaining if p not in destaques]
             
     while len(destaques) < 4 and remaining:
         destaques.append(remaining.pop(0))
         
-    # 5. Select Sidebar "Mais Lidas"
-    # Alcolumbre, Fifi/BBB, Lua de Sangue, Djonga, Alimentos, Congresso
-    # We can just reference the actual posts
-    mais_lidas = []
-    for title_kw in ["alcolumbre", "seu fifi", "lua de sangue", "djonga", "importação de alimentos", "emendas parlamentares"]:
-        matches = [p for p in posts if title_kw in p['title'].lower()]
-        if matches and not any(m['title'] == matches[0]['title'] for m in mais_lidas):
-            mais_lidas.append(matches[0])
+    # 5. Select Sidebar "Mais Lidas" (Tendências / Aleatórias para simular)
+    mais_lidas = posts[4:10] if len(posts) > 10 else posts[:6]
             
-    # 6. Select "Destaque da Semana"
-    divorcio_candidates = [p for p in posts if "divórcio cinza" in p['title'].lower()]
-    destaque_semana = divorcio_candidates[0] if divorcio_candidates else (posts[5] if len(posts) > 5 else (posts[0] if posts else hero))
+    # 6. Select "Destaque da Semana" (Opinião / Geral)
+    destaque_semana = posts[5] if len(posts) > 5 else hero
 
     # Pad sections to prevent IndexError on fresh starts
     while len(highlights) < 3: highlights.append(hero)
     while len(destaques) < 4: destaques.append(hero)
     while len(mais_lidas) < 6: mais_lidas.append(hero)
     # 7. Group articles by primary editorial sections
-    # Sections: Política, Economia, Internacional, Esportes, TV e Celebridades
+    # Sections: Política, Economia, Internacional, Esportes
     sections = {
         'Política': [],
         'Economia': [],
         'Internacional': [],
-        'Esportes': [],
-        'TV e Celebridades': []
+        'Esportes': []
     }
     
     # Populate editorial groups from remaining articles
@@ -607,9 +594,7 @@ def build_site():
             <a class="block font-normal text-[28px] md:text-[32px] tracking-tight text-white lowercase leading-none" style="font-family: 'Literata', serif;" href="index.html">
                 tagma
             </a>
-            <span class="font-label-bold text-[8px] uppercase tracking-[0.2em] text-white/40">
-                A evolução do jornalismo sério
-            </span>
+            
         </div>
         <nav class="w-full md:w-auto overflow-x-auto no-scrollbar">
             <div class="flex items-center space-x-4 md:space-x-6 font-label-bold text-[10.5px] uppercase tracking-[0.12em] whitespace-nowrap py-1">
@@ -641,13 +626,13 @@ def build_site():
         <!-- Left Side: Primary Headline (Hero) -->
         <div class="lg:col-span-8 flex flex-col justify-between">
             <article class="group cursor-pointer">
-                <div class="flex justify-center mb-6">
+                <div class="flex justify-start mb-6">
                     <span class="inline-flex items-center border border-border-subtle bg-surface-container-low pl-0 pr-3 py-1 font-label-bold text-[10px] uppercase tracking-widest text-editorial-green-deep">
                         <span class="w-1.5 h-4 bg-editorial-green-deep mr-2"></span>
-                        POLÍTICA NACIONAL
+                        {hero['category']}
                     </span>
                 </div>
-                <h1 class="font-headline-xl text-center text-primary mb-8 font-extrabold text-[36px] md:text-[54px] lg:text-[60px] leading-[1.05] tracking-tight group-hover:underline">
+                <h1 class="font-headline-xl text-left text-primary mb-8 font-extrabold text-[36px] md:text-[54px] lg:text-[60px] leading-[1.05] tracking-tight group-hover:underline">
                     <a href="materia.html?id={hero['id']}">{hero['title']}</a>
                 </h1>
                 

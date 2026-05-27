@@ -113,6 +113,9 @@
                 <button onclick="showNewPostForm()" class="bg-primary text-white px-6 py-3 font-bold text-xs uppercase tracking-widest hover:bg-editorial-green-deep transition-colors flex items-center">
                     <span class="material-symbols-outlined text-sm mr-2">add</span> Escrever Matéria
                 </button>
+                <button onclick="showPautasPanel()" class="bg-secondary text-white px-6 py-3 font-bold text-xs uppercase tracking-widest hover:bg-secondary-container transition-colors flex items-center">
+                    <span class="material-symbols-outlined text-sm mr-2">lightbulb</span> Sugestões IA
+                </button>
                 <button onclick="handleLogout()" class="border border-border-subtle bg-white text-primary px-4 py-3 font-bold text-xs uppercase tracking-widest hover:bg-surface-container-low transition-colors">
                     Sair
                 </button>
@@ -171,6 +174,39 @@
                     </button>
                 </div>
             </aside>
+        </div>
+    </main>
+
+
+    <!-- SECTION: Pautas IA -->
+    <main id="pautas-section" class="container-custom px-4 lg:px-8 py-8 md:py-12 hidden">
+        <div class="flex items-center justify-between pb-6 border-b border-border-subtle mb-8">
+            <div>
+                <h1 class="font-headline-sm text-2xl text-primary font-bold flex items-center">
+                    <span class="material-symbols-outlined mr-2 text-secondary">lightbulb</span> Pautas Quentes (IA)
+                </h1>
+                <p class="text-sm text-outline mt-1">Escolha uma editoria para a IA pesquisar as tendências e redigir para você.</p>
+            </div>
+            <button onclick="showDashboard()" class="text-xs uppercase tracking-wider text-outline hover:text-primary transition-colors flex items-center">
+                <span class="material-symbols-outlined text-sm mr-1">close</span> Voltar
+            </button>
+        </div>
+
+        <div class="flex flex-wrap gap-4 mb-8">
+            <button onclick="fetchPautas('Política')" class="px-4 py-2 border border-border-subtle font-bold text-xs uppercase hover:bg-surface-container-low">Política</button>
+            <button onclick="fetchPautas('Economia')" class="px-4 py-2 border border-border-subtle font-bold text-xs uppercase hover:bg-surface-container-low">Economia</button>
+            <button onclick="fetchPautas('Esportes')" class="px-4 py-2 border border-border-subtle font-bold text-xs uppercase hover:bg-surface-container-low">Esportes</button>
+            <button onclick="fetchPautas('Internacional')" class="px-4 py-2 border border-border-subtle font-bold text-xs uppercase hover:bg-surface-container-low">Internacional</button>
+            <button onclick="fetchPautas('Tecnologia')" class="px-4 py-2 border border-border-subtle font-bold text-xs uppercase hover:bg-surface-container-low">Tecnologia</button>
+        </div>
+
+        <div id="pautas-loading" class="hidden text-center py-12">
+            <span class="material-symbols-outlined text-4xl animate-spin text-secondary mb-4">sync</span>
+            <p class="font-bold text-primary">A Inteligência Artificial está analisando as pautas...</p>
+        </div>
+
+        <div id="pautas-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Pautas will be injected here -->
         </div>
     </main>
 
@@ -262,6 +298,7 @@
             document.getElementById('login-section').classList.remove('hidden');
             document.getElementById('dashboard-section').classList.add('hidden');
             document.getElementById('writing-section').classList.add('hidden');
+            document.getElementById('pautas-section').classList.add('hidden');
         }
 
         function showNewPostForm() {
@@ -269,8 +306,79 @@
             document.getElementById('writing-section').classList.remove('hidden');
         }
 
+        
+        function showPautasPanel() {
+            document.getElementById('dashboard-section').classList.add('hidden');
+            document.getElementById('writing-section').classList.add('hidden');
+            document.getElementById('pautas-section').classList.add('hidden');
+            document.getElementById('pautas-section').classList.remove('hidden');
+            document.getElementById('pautas-grid').innerHTML = '';
+        }
+
+        async function fetchPautas(categoria) {
+            document.getElementById('pautas-grid').innerHTML = '';
+            document.getElementById('pautas-loading').classList.remove('hidden');
+            
+            try {
+                const response = await fetch(`http://localhost:5000/api/pautas?category=${categoria}`);
+                const data = await response.json();
+                
+                document.getElementById('pautas-loading').classList.add('hidden');
+                
+                let html = '';
+                data.forEach((pauta, index) => {
+                    html += `
+                        <div class="border border-border-subtle bg-white p-6 hover:shadow-lg transition-shadow cursor-pointer flex flex-col justify-between" onclick="draftArticle('${pauta.title.replace(/'/g, "\'")}', '${categoria}')">
+                            <div>
+                                <span class="bg-secondary/10 text-secondary px-2 py-1 text-[10px] font-bold uppercase tracking-wider mb-4 inline-block">${categoria}</span>
+                                <h3 class="font-headline-sm text-lg font-bold text-primary mb-2">${pauta.title}</h3>
+                                <p class="text-sm text-on-surface-variant line-clamp-3">${pauta.description}</p>
+                            </div>
+                            <div class="mt-6 border-t border-border-subtle pt-4 text-xs font-bold text-secondary flex items-center uppercase tracking-widest">
+                                <span class="material-symbols-outlined text-[16px] mr-1">edit_document</span> Redigir Matéria
+                            </div>
+                        </div>
+                    `;
+                });
+                document.getElementById('pautas-grid').innerHTML = html;
+            } catch (err) {
+                console.error(err);
+                document.getElementById('pautas-loading').classList.add('hidden');
+                alert('Erro ao conectar com a IA. Certifique-se que o servidor local (admin_server.py) está rodando.');
+            }
+        }
+
+        async function draftArticle(title, categoria) {
+            // Setup loading state on the form
+            showNewPostForm();
+            document.getElementById('post-title').value = "A Inteligência Artificial está redigindo...";
+            document.getElementById('post-category').value = categoria;
+            document.getElementById('post-author').value = "Redação Automática";
+            document.getElementById('post-excerpt').value = "Aguarde...";
+            document.getElementById('post-content').value = "Conectando ao Groq e gerando texto, não feche a página...";
+            
+            try {
+                const response = await fetch('http://localhost:5000/api/draft', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ title: title, category: categoria })
+                });
+                const data = await response.json();
+                
+                document.getElementById('post-title').value = data.title;
+                document.getElementById('post-excerpt').value = data.excerpt;
+                document.getElementById('post-content').value = data.content;
+                // Add a placeholder image from pexels to make it visually pleasing
+                document.getElementById('post-image').value = "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"; 
+            } catch (err) {
+                console.error(err);
+                alert('Falha ao redigir artigo. O servidor local está rodando?');
+            }
+        }
+
         function showDashboard() {
             document.getElementById('writing-section').classList.add('hidden');
+            document.getElementById('pautas-section').classList.add('hidden');
             document.getElementById('dashboard-section').classList.remove('hidden');
             loadDashboardData();
         }
