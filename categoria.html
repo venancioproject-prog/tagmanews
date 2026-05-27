@@ -62,15 +62,38 @@
 <body class="antialiased min-h-screen flex flex-col">
 
 <!-- Cabeçalho (Mesmo do Site) -->
-<header class="border-b-4 border-primary bg-surface sticky top-0 z-50 shadow-[0_4px_12px_rgba(0,0,0,0.05)]">
-    <div class="container-custom px-4 lg:px-8 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
-        <div class="flex items-center">
-            <a href="index.html" class="flex items-center group">
-                <span class="font-headline-xl font-bold text-3xl md:text-4xl tracking-tight text-primary uppercase group-hover:text-primary-container transition-colors">tagma</span>
-                <span class="ml-3 border-l border-outline-variant pl-3 hidden md:block text-[11px] font-meta italic text-on-surface-variant max-w-[150px] leading-tight">
-                    A evolução do jornalismo sério
-                </span>
+<header class="bg-[#003311] text-white">
+    <!-- Top Utility Bar (More Compact) -->
+    <div class="container-custom px-4 lg:px-8 flex justify-between items-center text-meta font-meta py-1 border-b border-white/10">
+        <div class="flex items-center space-x-4">
+            <span class="hidden md:inline uppercase tracking-widest text-[9px] text-white/60">Hoje, 24 de Maio de 2026</span>
+            <span class="md:hidden text-[9px] text-white/60">24 MAI 2026</span>
+        </div>
+        <div class="flex items-center space-x-4">
+            <button class="hover:text-secondary-container transition-colors uppercase tracking-widest text-[9px] font-bold">Assine</button>
+            <a href="admin.html" class="hover:text-secondary-container transition-colors uppercase tracking-widest text-[9px] font-bold">Entrar</a>
+            
+        <button onclick="openSearch()" class="flex items-center text-white/80 hover:text-white transition-colors p-1 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-secondary-container rounded" aria-label="Abrir busca">
+            <span class="material-symbols-outlined text-[16px]" aria-hidden="true">search</span>
+            <span class="hidden md:inline ml-1 text-[9px] font-label-bold uppercase tracking-widest opacity-60 font-bold border border-white/20 rounded px-1">Ctrl+K</span>
+        </button>
+        <button onclick="openDrawer()" class="md:hidden flex items-center text-white/80 hover:text-white transition-colors p-1 ml-2 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-secondary-container rounded" aria-label="Abrir menu">
+            <span class="material-symbols-outlined text-[20px]" aria-hidden="true">menu</span>
+        </button>
+        
+        </div>
+    </div>
+    
+    <!-- Logo and Nav (More Compact & Elegant Serif Logo) -->
+    <div class="container-custom px-4 lg:px-8 py-2 md:py-3 flex flex-col md:flex-row md:items-center md:justify-between gap-2 md:gap-4">
+        <div class="flex items-baseline space-x-3">
+            <!-- Rebranded Premium Logo matching user image (lowercase serif font) -->
+            <a class="block font-normal text-[28px] md:text-[32px] tracking-tight text-white lowercase leading-none" style="font-family: 'Literata', serif;" href="index.html">
+                tagma
             </a>
+            <span class="font-label-bold text-[8px] uppercase tracking-[0.2em] text-white/40">
+                A evolução do jornalismo sério
+            </span>
         </div>
         <nav class="w-full md:w-auto overflow-x-auto no-scrollbar">
             <div class="flex items-center space-x-4 md:space-x-6 font-label-bold text-[10.5px] uppercase tracking-[0.12em] whitespace-nowrap py-1">
@@ -118,18 +141,44 @@
 
 </main>
 
-<footer class="bg-primary text-surface mt-auto py-12 border-t-8 border-secondary">
+<footer class="bg-primary text-white py-16 pb-24 md:pb-16">
     <div class="container-custom px-4 lg:px-8">
-        <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="text-center md:text-left">
-                <span class="font-headline-xl font-bold text-3xl tracking-tight uppercase">tagma</span>
-                <p class="font-meta text-[13px] text-surface-container-low mt-2">© 2026 Portal Tagma. Todos os direitos reservados.</p>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-white/10 pb-12 mb-12">
+            <div class="col-span-1 md:col-span-2">
+                <div class="mb-4 font-normal text-[32px] tracking-tight text-white lowercase leading-none" style="font-family: 'Literata', serif;">
+                    tagma
+                </div>
+                <p class="text-surface-container-low/70 text-sm max-w-sm font-body-sm leading-relaxed">
+                    Informação com precisão, ética e independência. A evolução do antigo portal TN&C, reconstruído com infraestrutura escalável para levar o jornalismo de excelência a milhões de leitores.
+                </p>
+                <div class="flex space-x-6 mt-8">
+                    <span class="material-symbols-outlined cursor-pointer hover:text-secondary-container transition-colors">facebook</span>
+                    <span class="material-symbols-outlined cursor-pointer hover:text-secondary-container transition-colors">share</span>
+                    <span class="material-symbols-outlined cursor-pointer hover:text-secondary-container transition-colors">podcasts</span>
+                </div>
             </div>
-            <div class="flex space-x-6 font-label-bold text-[11px] uppercase tracking-wider text-surface-container-low">
-                <a class="hover:text-white transition-colors" href="quem-somos.html">Expediente</a>
-                <a class="hover:text-white transition-colors" href="politica-de-privacidade.html">Privacidade</a>
-                <a class="hover:text-white transition-colors" href="termos-de-uso.html">Termos</a>
+            <div>
+                <h5 class="font-label-bold uppercase tracking-widest mb-8 text-xs text-white font-bold">Editorias</h5>
+                <ul class="space-y-4 text-surface-container-low/60 text-[12px] font-label-bold uppercase tracking-wider">
+                    <li><a class="hover:text-white transition-colors" href="#politica">Política</a></li>
+                    <li><a class="hover:text-white transition-colors" href="#economia">Economia</a></li>
+                    <li><a class="hover:text-white transition-colors" href="#internacional">Internacional</a></li>
+                    <li><a class="hover:text-white transition-colors" href="#esportes">Esportes</a></li>
+                    <li><a class="hover:text-white transition-colors" href="#cultura">Cultura & Arte</a></li>
+                </ul>
             </div>
+            <div>
+                <h5 class="font-label-bold uppercase tracking-widest mb-8 text-xs text-white font-bold">Institucional</h5>
+                <ul class="space-y-4 text-surface-container-low/60 text-[12px] font-label-bold uppercase tracking-wider">
+                    <li><a class="hover:text-white transition-colors" href="#">Quem Somos</a></li>
+                    <li><a class="hover:text-white transition-colors" href="#">Expediente</a></li>
+                    <li><a class="hover:text-white transition-colors" href="#">Anuncie</a></li>
+                    <li><a class="hover:text-white transition-colors" href="#">Privacidade</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="text-center text-[10px] uppercase tracking-[0.3em] text-white/30">
+            © 2026 TAGMA NOTÍCIAS. TODOS OS DIREITOS RESERVADOS.
         </div>
     </div>
 </footer>
