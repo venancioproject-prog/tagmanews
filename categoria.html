@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="light" lang="pt-BR">
+<html class="light" lang="pt-BR" dir="ltr">
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -21,7 +21,7 @@
               "on-primary": "#ffffff",
               "primary-container": "#003311",
               secondary: "#934b00",
-              "secondary-container": "#fd9337",
+              "secondary-container": "#d8561c",
               error: "#ba1a1a",
               "surface-container-low": "#f6f3f2",
               "surface-off-white": "#fcfcfc",
@@ -47,7 +47,17 @@
     <style>
       .container-custom { max-width: 1440px; margin: 0 auto; }
       body { background-color: theme('colors.surface'); color: theme('colors.on-surface'); }
-    </style>
+    
+        *:focus-visible { outline: 2px solid #d8561c !important; outline-offset: 2px; }
+        @media (max-width: 480px) {
+            .font-headline-xl { font-size: 85% !important; }
+            .container-custom { padding-left: 16px !important; padding-right: 16px !important; }
+        }
+        .truncate-lines { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+        .skeleton { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; background-color: #e0e0e0; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
+        
+</style>
 </head>
 <body class="antialiased min-h-screen flex flex-col">
 
@@ -86,8 +96,24 @@
         <!-- Articles injected via JS -->
     </div>
 
-    <div id="no-articles-msg" class="hidden py-20 text-center">
-        <p class="font-body text-xl text-outline">Ainda não há matérias publicadas nesta categoria.</p>
+    <div id="no-articles-msg" class="hidden py-16 text-center max-w-2xl mx-auto">
+        <span class="material-symbols-outlined text-6xl text-outline-variant mb-4" aria-hidden="true">article</span>
+        <h2 class="font-headline-xl text-3xl text-primary font-bold mb-4">Nenhuma matéria publicada</h2>
+        <p class="font-body text-lg text-on-surface-variant mb-8">Nossa equipe está apurando os fatos. Em breve teremos novidades nesta editoria.</p>
+        
+        <a href="index.html" class="inline-flex items-center px-6 py-3 bg-primary text-white font-label-bold text-[12px] uppercase tracking-widest hover:bg-primary-container transition-colors rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary-container mb-12">
+            <span class="material-symbols-outlined mr-2 text-[18px]" aria-hidden="true">arrow_back</span>
+            Voltar para a Home
+        </a>
+
+        <div class="border-t border-border-subtle pt-8">
+            <h3 class="font-label-bold text-[11px] uppercase tracking-widest text-outline mb-6">Explore outras categorias</h3>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="categoria.html?c=politica" class="px-4 py-2 border border-border-subtle hover:border-secondary hover:text-secondary rounded font-label-bold text-[12px] uppercase transition-colors">Política</a>
+                <a href="categoria.html?c=economia" class="px-4 py-2 border border-border-subtle hover:border-secondary hover:text-secondary rounded font-label-bold text-[12px] uppercase transition-colors">Economia</a>
+                <a href="categoria.html?c=internacional" class="px-4 py-2 border border-border-subtle hover:border-secondary hover:text-secondary rounded font-label-bold text-[12px] uppercase transition-colors">Internacional</a>
+            </div>
+        </div>
     </div>
 
 </main>
@@ -170,5 +196,158 @@
         }
     });
 </script>
+
+<!-- Search Modal -->
+<dialog id="searchModal" class="backdrop:bg-black/80 p-0 rounded-xl shadow-2xl bg-surface border border-border-subtle w-11/12 max-w-2xl m-auto open:animate-in open:fade-in open:zoom-in-95">
+    <div class="flex flex-col h-[60vh] md:h-[400px]">
+        <div class="flex items-center px-4 py-3 border-b border-border-subtle">
+            <span class="material-symbols-outlined text-outline mr-3" aria-hidden="true">search</span>
+            <input type="text" id="searchInput" class="flex-1 bg-transparent border-none focus:ring-0 text-on-surface placeholder:text-outline-variant font-body-lg text-lg outline-none" placeholder="Buscar matérias..." aria-label="Buscar" role="search">
+            <button id="closeSearchBtn" class="text-outline hover:text-error transition-colors p-2 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary-container">
+                <span class="material-symbols-outlined" aria-hidden="true">close</span>
+            </button>
+        </div>
+        <div id="searchResults" class="flex-1 overflow-y-auto p-4 space-y-4">
+            <div class="text-center text-outline-variant py-8 font-meta text-sm italic">Comece a digitar para buscar...</div>
+        </div>
+    </div>
+</dialog>
+
+<!-- Mobile Hamburger Drawer -->
+<div id="mobileDrawer" class="fixed inset-y-0 left-0 w-64 bg-surface shadow-2xl z-[100] transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col border-r border-border-subtle">
+    <div class="p-4 border-b border-border-subtle flex justify-between items-center bg-primary text-white">
+        <span class="font-normal text-[24px] tracking-tight lowercase leading-none" style="font-family: 'Literata', serif;">tagma</span>
+        <button id="closeDrawerBtn" class="text-white/80 hover:text-white p-1 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary-container">
+            <span class="material-symbols-outlined" aria-hidden="true">close</span>
+        </button>
+    </div>
+    <nav class="flex flex-col p-4 space-y-4 font-label-bold text-[12px] uppercase tracking-widest text-on-surface">
+        <a href="categoria.html?c=politica" class="py-2 border-b border-border-subtle hover:text-secondary-container focus:text-secondary-container">Política</a>
+        <a href="categoria.html?c=economia" class="py-2 border-b border-border-subtle hover:text-secondary-container focus:text-secondary-container">Economia</a>
+        <a href="categoria.html?c=internacional" class="py-2 border-b border-border-subtle hover:text-secondary-container focus:text-secondary-container">Internacional</a>
+        <a href="categoria.html?c=esportes" class="py-2 border-b border-border-subtle hover:text-secondary-container focus:text-secondary-container">Esportes</a>
+        <a href="categoria.html?c=cultura" class="py-2 border-b border-border-subtle hover:text-secondary-container focus:text-secondary-container">Cultura</a>
+        <a href="categoria.html?c=tecnologia" class="py-2 hover:text-secondary-container focus:text-secondary-container">Tecnologia</a>
+    </nav>
+</div>
+<div id="drawerOverlay" class="fixed inset-0 bg-black/60 z-[90] hidden transition-opacity opacity-0"></div>
+
+<!-- Toast Container -->
+<div id="toastContainer" class="fixed bottom-20 md:bottom-8 right-4 md:right-8 z-[110] flex flex-col space-y-2 pointer-events-none"></div>
+
+<!-- Global UI Scripts -->
+<script>
+    // Toasts
+    window.showToast = function(message) {
+        const container = document.getElementById('toastContainer');
+        const toast = document.createElement('div');
+        toast.className = 'bg-primary text-white px-6 py-3 rounded shadow-xl font-meta text-[13px] flex items-center transform transition-all duration-300 translate-y-full opacity-0 pointer-events-auto';
+        toast.innerHTML = `<span class="material-symbols-outlined mr-2 text-[18px]" aria-hidden="true">info</span> ${message}`;
+        container.appendChild(toast);
+        
+        requestAnimationFrame(() => {
+            toast.classList.remove('translate-y-full', 'opacity-0');
+        });
+        
+        setTimeout(() => {
+            toast.classList.add('opacity-0', 'translate-y-2');
+            setTimeout(() => toast.remove(), 300);
+        }, 3000);
+    };
+
+    // Attach toasts to dummy buttons
+    document.querySelectorAll('button:not([id]), a[href="#"]').forEach(btn => {
+        if(btn.textContent.trim() === 'Assine' || btn.textContent.trim() === 'Comprar' || btn.href?.endsWith('#')) {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.showToast("Recurso indisponível no momento.");
+            });
+        }
+    });
+
+    // Mobile Drawer
+    const drawer = document.getElementById('mobileDrawer');
+    const overlay = document.getElementById('drawerOverlay');
+    
+    window.openDrawer = function() {
+        drawer.classList.remove('-translate-x-full');
+        overlay.classList.remove('hidden');
+        document.body.style.overflow = 'hidden'; // Prevent scroll
+        setTimeout(() => overlay.classList.remove('opacity-0'), 10);
+    };
+    
+    window.closeDrawer = function() {
+        drawer.classList.add('-translate-x-full');
+        overlay.classList.add('opacity-0');
+        document.body.style.overflow = '';
+        setTimeout(() => overlay.classList.add('hidden'), 300);
+    };
+
+    document.getElementById('closeDrawerBtn')?.addEventListener('click', closeDrawer);
+    overlay?.addEventListener('click', closeDrawer);
+
+    // Search Logic
+    const searchModal = document.getElementById('searchModal');
+    const searchInput = document.getElementById('searchInput');
+    const closeSearchBtn = document.getElementById('closeSearchBtn');
+    
+    window.openSearch = function() {
+        searchModal.showModal();
+        searchInput.focus();
+    };
+
+    closeSearchBtn?.addEventListener('click', () => searchModal.close());
+    
+    document.addEventListener('keydown', (e) => {
+        if (e.ctrlKey && e.key === 'k') {
+            e.preventDefault();
+            window.openSearch();
+        }
+    });
+
+    let allPosts = [];
+    searchModal?.addEventListener('click', (e) => {
+        if(e.target === searchModal) searchModal.close();
+    });
+
+    searchInput?.addEventListener('input', async (e) => {
+        const query = e.target.value.toLowerCase().trim();
+        const resultsDiv = document.getElementById('searchResults');
+        
+        if (query.length < 2) {
+            resultsDiv.innerHTML = '<div class="text-center text-outline-variant py-8 font-meta text-sm italic">Comece a digitar para buscar...</div>';
+            return;
+        }
+
+        if (allPosts.length === 0) {
+            try {
+                const res = await fetch('posts.json');
+                allPosts = await res.json();
+            } catch (err) {
+                console.error(err);
+            }
+        }
+
+        const filtered = allPosts.filter(p => p.title.toLowerCase().includes(query) || (p.excerpt && p.excerpt.toLowerCase().includes(query)));
+        
+        if (filtered.length === 0) {
+            resultsDiv.innerHTML = '<div class="text-center text-outline-variant py-8 font-meta text-sm">Nenhum resultado encontrado.</div>';
+            return;
+        }
+
+        resultsDiv.innerHTML = filtered.map(p => `
+            <a href="materia.html?id=${p.id}" class="flex gap-4 p-3 hover:bg-surface-container-low rounded-lg transition-colors group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary-container">
+                <div class="w-20 h-20 shrink-0 bg-gray-100 rounded overflow-hidden">
+                    <img src="${p.image}" class="w-full h-full object-cover" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=400';">
+                </div>
+                <div class="flex-1">
+                    <span class="text-[9px] uppercase tracking-wider text-editorial-green-deep font-label-bold">${p.category}</span>
+                    <h4 class="font-headline-sm text-sm font-bold text-primary group-hover:underline line-clamp-2">${p.title}</h4>
+                </div>
+            </a>
+        `).join('');
+    });
+</script>
+
 </body>
 </html>
